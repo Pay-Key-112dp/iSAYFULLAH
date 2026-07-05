@@ -29,19 +29,66 @@
       justify-content: center;
       min-height: 100vh;
       padding: 24px 20px;
-      background: radial-gradient(ellipse at 50% 30%, #1a1a1a 0%, #0a0a0a 70%);
+      overflow: hidden;
+      position: relative;
     }
+
+    /* ===== ФОН — полностью как на главном сайте ===== */
+    .bg-layer {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      background: radial-gradient(130% 92% at 50% -12%, #eaeaea 0%, #dcdcdc 48%, #cfcfcf 100%);
+      animation: fadeBg 2.8s ease-out forwards;
+    }
+    @keyframes fadeBg {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    .bg-dark {
+      position: absolute;
+      inset: 0;
+      background: #0a0a0a;
+    }
+
+    /* Фото с эффектами — как на главном сайте */
+    .bg-photo {
+      position: absolute;
+      inset: 0;
+      background: url('photos/zapret.png') 50% 22% / cover no-repeat;
+      filter: grayscale(1) contrast(1.12) brightness(0.85);
+      -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 14%, #000 86%, transparent 100%);
+      mask-image: linear-gradient(90deg, transparent 0%, #000 14%, #000 86%, transparent 100%);
+      animation: hzoom 9s cubic-bezier(.2,.7,.2,1) both;
+    }
+    @keyframes hzoom {
+      from { transform: scale(1.07); }
+      to { transform: scale(1); }
+    }
+
+    /* Затемнение поверх фото */
+    .bg-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(110deg, rgba(10,10,10,.62), rgba(8,8,8,.58));
+    }
+
     .container {
+      position: relative;
+      z-index: 1;
       max-width: 600px;
       width: 100%;
       text-align: center;
+      /* Сдвиг влево на 5% */
+      transform: translateX(-10%);
     }
 
-    /* Логотип */
+    /* Логотип — как на главном сайте */
     .logo {
       display: inline-flex;
       align-items: center;
-      gap: 14px;
+      gap: 13px;
       margin-bottom: 48px;
       text-decoration: none;
     }
@@ -49,59 +96,63 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 50px;
-      height: 50px;
-      border-radius: 12px;
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
       background: linear-gradient(150deg, #232323, #050505);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.07), 0 4px 16px rgba(0,0,0,.5);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.07), 0 4px 12px rgba(0,0,0,.3);
     }
     .logo-badge span {
-      font: 700 20px 'Oswald', sans-serif;
+      font: 700 16px 'Oswald', sans-serif;
       color: #e7e7e7;
       letter-spacing: .04em;
     }
     .logo-text {
       display: flex;
       flex-direction: column;
-      align-items: flex-start;
       line-height: 1.05;
+      align-items: flex-start;
     }
     .logo-text .brand {
-      font: 700 18px 'Oswald', sans-serif;
+      font: 700 13px 'Oswald', sans-serif;
       letter-spacing: .1em;
       text-transform: uppercase;
       color: #f0f0f0;
     }
     .logo-text .sub {
-      font: 500 12px 'Oswald', sans-serif;
-      letter-spacing: .16em;
+      font: 600 11px 'Oswald', sans-serif;
+      letter-spacing: .14em;
       text-transform: uppercase;
       color: #787878;
       margin-top: 2px;
     }
 
-    /* Основной блок */
+    /* Иконка — стиль как на главном */
     .status-icon {
-      margin-bottom: 32px;
+      margin-bottom: 28px;
       display: flex;
       justify-content: center;
+      opacity: 0.7;
     }
     .status-icon svg {
-      width: 56px;
-      height: 56px;
-      color: #d8d8d8;
-      opacity: 0.6;
+      width: 44px;
+      height: 44px;
+      color: #e7e7e7;
+      stroke-width: 1.4;
+      fill: none;
     }
 
+    /* Заголовок — как на главном */
     h1 {
       font-family: 'Jost', sans-serif;
       font-weight: 300;
-      font-size: clamp(32px, 8vw, 56px);
+      font-size: clamp(38px, 7vw, 72px);
       color: #f2f2f2;
       letter-spacing: .01em;
-      line-height: 1.05;
+      line-height: 1.02;
       text-transform: uppercase;
       margin-bottom: 12px;
+      text-shadow: 0 2px 40px rgba(0,0,0,.4);
     }
     h1 span {
       font-weight: 500;
@@ -109,109 +160,166 @@
     }
 
     .message {
-      font-size: clamp(16px, 2.4vw, 22px);
+      font-size: clamp(15px, 1.8vw, 20px);
       font-weight: 400;
       color: #b4b4b4;
-      line-height: 1.55;
-      margin-bottom: 12px;
+      line-height: 1.6;
       letter-spacing: .02em;
+      text-shadow: 0 2px 20px rgba(0,0,0,.3);
     }
-
     .sub-message {
-      font-size: clamp(14px, 1.6vw, 18px);
-      font-weight: 300;
-      color: #6b6b6b;
+      font-size: clamp(13px, 1.4vw, 16px);
+      font-weight: 400;
+      color: #8a8a8a;
+      margin-top: 4px;
       margin-bottom: 40px;
       letter-spacing: .04em;
+      text-shadow: 0 2px 16px rgba(0,0,0,.3);
     }
 
-    /* Прогресс-бар */
-    .progress-wrap {
-      width: 100%;
-      max-width: 340px;
-      margin: 0 auto 48px;
-    }
-    .progress-track {
-      position: relative;
-      width: 100%;
-      height: 2px;
-      background: rgba(255,255,255,.08);
-      border-radius: 1px;
-      overflow: hidden;
-    }
-    .progress-bar {
-      height: 100%;
-      width: 0%;
-      background: linear-gradient(90deg, #d8d8d8, #f2f2f2);
-      border-radius: 1px;
-      animation: fillProgress 2.8s ease-in-out forwards;
-    }
-    @keyframes fillProgress {
-      0% { width: 0%; }
-      40% { width: 38%; }
-      70% { width: 72%; }
-      100% { width: 100%; }
-    }
-
-    .progress-label {
-      display: block;
-      margin-top: 12px;
-      font: 500 11px 'Oswald', sans-serif;
-      letter-spacing: .22em;
-      text-transform: uppercase;
-      color: #6b6b6b;
-    }
-
-    /* Контакт — опционально, но в стиле сайта */
-    .contact-link {
-      display: inline-flex;
+    /* Три точки */
+    .dots-wrap {
+      display: flex;
+      justify-content: center;
       align-items: center;
       gap: 10px;
+      margin-bottom: 44px;
+      height: 20px;
+    }
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #b4b4b4;
+      animation: dotPulse 1.6s ease-in-out infinite both;
+    }
+    .dot:nth-child(1) { animation-delay: 0s; }
+    .dot:nth-child(2) { animation-delay: 0.3s; }
+    .dot:nth-child(3) { animation-delay: 0.6s; }
+
+    @keyframes dotPulse {
+      0%, 80%, 100% {
+        transform: scale(0.6);
+        opacity: 0.25;
+      }
+      40% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    /* Кнопки — стиль hero-cta с главного сайта */
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 14px;
+      margin-top: 4px;
+    }
+
+    .action-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
       font: 600 12px 'Oswald', sans-serif;
-      letter-spacing: .16em;
+      letter-spacing: .22em;
       text-transform: uppercase;
-      color: #c8c8c8;
+      color: #141414;
       text-decoration: none;
-      border: 1px solid rgba(210,210,210,.16);
-      padding: 14px 28px;
-      border-radius: 10px;
-      transition: border-color .3s, background .3s;
+      padding: 18px 28px;
+      border-radius: 12px;
+      border: 1px solid rgba(0,0,0,.14);
+      background: linear-gradient(#f5f5f5, #e3e3e3);
+      box-shadow: 0 16px 34px rgba(10,10,10,.2);
+      transition: transform .35s, box-shadow .4s;
+      min-width: 200px;
     }
-    .contact-link:hover {
-      border-color: rgba(210,210,210,.4);
-      background: rgba(255,255,255,.04);
+    .action-link:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 20px 42px rgba(10,10,10,.3);
     }
-    .contact-link svg {
+    .action-link svg {
       width: 14px;
       height: 14px;
       stroke: currentColor;
-      stroke-width: 1.6;
+      stroke-width: 1.4;
       fill: none;
+      transition: transform .4s cubic-bezier(.2,.7,.2,1);
+    }
+    .action-link:hover svg {
+      transform: translate(5px, -5px);
     }
 
-    /* Адаптивность */
+    .action-link.partner {
+      background: linear-gradient(#2a2a2a, #161616);
+      color: #f0f0f0;
+      border-color: rgba(255,255,255,.16);
+      box-shadow: 0 16px 34px rgba(0,0,0,.3);
+    }
+    .action-link.partner:hover {
+      background: linear-gradient(#3a3a3a, #222);
+      border-color: rgba(255,255,255,.3);
+    }
+
+    /* ===== АДАПТИВНОСТЬ ===== */
+    @media (max-width: 1024px) {
+      .container {
+        transform: translateX(-3%);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        transform: translateX(0);
+        text-align: center;
+      }
+      .logo {
+        justify-content: center;
+      }
+      .logo-text {
+        align-items: center;
+      }
+    }
+
     @media (max-width: 480px) {
       .logo-badge {
-        width: 42px;
-        height: 42px;
+        width: 34px;
+        height: 34px;
       }
       .logo-badge span {
-        font-size: 16px;
+        font-size: 14px;
       }
       .logo-text .brand {
-        font-size: 15px;
+        font-size: 12px;
       }
       .logo-text .sub {
         font-size: 10px;
       }
-      .contact-link {
-        padding: 12px 22px;
+      .action-link {
+        padding: 14px 20px;
         font-size: 11px;
+        min-width: 160px;
+        gap: 16px;
+      }
+      .actions {
+        gap: 12px;
+      }
+      .dot {
+        width: 6px;
+        height: 6px;
       }
     }
   </style>
 </head>
 <body>
+
+  <!-- ===== ФОН ===== -->
+  <div class="bg-layer">
+    <div class="bg-dark"></div>
+    <div class="bg-photo"></div>
+    <div class="bg-overlay"></div>
+  </div>
 
   <div class="container">
     <!-- Логотип -->
@@ -225,9 +333,9 @@
       </span>
     </a>
 
-    <!-- Иконка-индикатор -->
+    <!-- Иконка -->
     <div class="status-icon">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+      <svg viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
         <path d="M12 3L4 6v6c0 4 3.4 6.8 8 9 4.6-2.2 8-5 8-9V6l-8-3z" />
         <path d="M9 12l2 2 4-4" />
       </svg>
@@ -238,20 +346,26 @@
 
     <!-- Сообщение -->
     <p class="message">Завтра тут будет контент)</p>
+    <p class="sub-message">Мы строим систему. Скоро всё заработает.</p>
 
-    <!-- Прогресс-бар -->
-    <div class="progress-wrap">
-      <div class="progress-track">
-        <div class="progress-bar"></div>
-      </div>
-      <span class="progress-label">Сборка системы</span>
+    <!-- Три точки -->
+    <div class="dots-wrap">
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
     </div>
 
-    <!-- Опциональный контакт в Telegram -->
-    <a href="https://t.me/iamSayfullah" target="_blank" rel="noopener" class="contact-link">
-      <span>Написать в Telegram</span>
-      <svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg>
-    </a>
+    <!-- Действия -->
+    <div class="actions">
+      <a href="https://t.me/iamSayfullah" target="_blank" rel="noopener" class="action-link">
+        <span>Telegram</span>
+        <svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg>
+      </a>
+      <a href="partnerka.html" class="action-link partner">
+        <span>Партнёрам</span>
+        <svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg>
+      </a>
+    </div>
   </div>
 
 </body>
