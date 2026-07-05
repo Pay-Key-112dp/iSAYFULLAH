@@ -103,7 +103,6 @@
     .hero-photo{top:0 !important;bottom:auto !important;left:0 !important;right:0 !important;width:100% !important;height:44vh !important;-webkit-mask-image:linear-gradient(180deg,#000 58%,transparent) !important;mask-image:linear-gradient(180deg,#000 58%,transparent) !important;opacity:1 !important}
     .hero-content{position:relative !important;max-width:100% !important;padding:46vh 24px 34px !important}
     .hero-cta{min-width:0 !important;width:100% !important;gap:20px !important}
-    .hero-stats{grid-template-columns:repeat(2,1fr) !important}
     .hero-side{display:none !important}
   }
   @media(max-width:760px){
@@ -119,11 +118,6 @@
     header{height:56px !important;border-radius:13px !important}
     .hbadge{width:32px !important;height:32px !important}
     .hbrand-sub{display:none !important}
-    .hero-stats{grid-template-columns:repeat(2,1fr) !important;gap:10px !important}
-  }
-  @media(max-width:420px){
-    .hero-stats{grid-template-columns:1fr 1fr !important;gap:8px !important}
-    .statbox{padding:12px 6px !important}
   }
 
   :root{--ink:#0a0a0a;--paper:#e7e7e7;--muted:#8f8f8f;--rim:rgba(220,220,220,.4);--rim-soft:rgba(220,220,220,.14)}
@@ -131,14 +125,30 @@
   .flink:hover{color:#f2f2f2 !important}
   .reveal{opacity:0;transform:translateY(16px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
   .reveal.is-in{opacity:1;transform:none}
-  .statbox{transition:border-color .4s,transform .4s,background .4s}
-  .statbox:hover{border-color:rgba(210,210,210,.35) !important;transform:translateY(-3px);background:rgba(255,255,255,.05) !important}
   .sidecard{transition:border-color .4s,transform .4s,background .4s}
   .sidecard:hover{border-color:rgba(210,210,210,.35) !important;transform:translateX(-3px);background:rgba(255,255,255,.06) !important}
   @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto !important;transition:none !important;animation:none !important}.reveal{opacity:1 !important;transform:none !important}}
 </style>
 </head>
 <body>
+
+<noscript><style>#loader{display:none !important}</style></noscript>
+
+<!-- ===== ПРЕЛОАДЕР ===== -->
+<div id="loader" style="position:fixed;inset:0;z-index:999;background:#0a0a0a;display:flex;align-items:center;justify-content:center;transition:opacity .6s ease, visibility .6s ease">
+  <div style="display:flex;flex-direction:column;align-items:center;gap:22px;width:min(320px,72vw)">
+    <svg id="loader-lion" viewBox="0 0 120 90" width="46" height="35" style="opacity:0;transition:opacity .5s ease" fill="none" stroke="#d8d8d8" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M60 20c-14 0-24 11-24 25 0 10 5 17 11 22-2 4-6 6-10 7 6 3 13 2 17-2 2 2 4 3 6 3s4-1 6-3c4 4 11 5 17 2-4-1-8-3-10-7 6-5 11-12 11-22 0-14-10-25-24-25z"></path>
+      <path d="M38 30c-6-4-10-10-9-17 6 1 11 5 13 11M82 30c6-4 10-10 9-17-6 1-11 5-13 11"></path>
+      <path d="M52 46c1-2 3-2 4 0M64 46c1-2 3-2 4 0"></path>
+    </svg>
+    <div style="position:relative;width:100%;height:1px;background:rgba(255,255,255,.12)">
+      <div id="loader-bar" style="position:absolute;left:0;top:0;height:1px;width:0%;background:#e7e7e7;transition:width .5s cubic-bezier(.2,.7,.2,1)"></div>
+    </div>
+    <div id="loader-txt" style="font:500 11px 'Oswald',sans-serif;letter-spacing:.22em;text-transform:uppercase;color:#8a8a8a;min-height:14px">устанавливаю связь</div>
+  </div>
+</div>
+
 <div style="position:relative;min-height:100vh;overflow-x:clip;background:#d9d9d9;color:#141414;font-family:'Hanken Grotesk',system-ui,sans-serif">
 
   <div style="position:absolute;top:0;left:0;right:0;height:100vh;z-index:0;overflow:hidden">
@@ -229,42 +239,9 @@
           <span style="font:600 12px 'Oswald';letter-spacing:.32em;text-transform:uppercase;color:#9a9a9a">Технический таргетолог и разработчик</span>
         </div>
         <h1 style="margin-top:26px;font-family:'Jost';font-weight:300;text-transform:uppercase;line-height:1.02;letter-spacing:.01em;color:#f2f2f2;font-size:clamp(44px,6.4vw,90px)">Один человек. Вместо<br><span style="font-weight:500"> целого отдела.</span></h1>
-        <p style="margin-top:26px;max-width:44ch;font:400 clamp(15px,1.15vw,18px)/1.64 'Hanken Grotesk';color:#b4b4b4">Ты продолжаешь искать дизайнеров, разработчиков, маркетологов и интеграторов. Я заменяю их одним человеком.
+        <p style="margin-top:26px;max-width:44ch;font:400 clamp(15px,1.15vw,18px)/1.64 'Hanken Grotesk';color:#b4b4b4">Ты продолжаешь искать дизайнеров, разработчиков, маркетологов и интеграторов. Я заменяю их одним человеком. Код. Продукт. Автоматизация. Трафик. Ответственность.</p>
 
-Код.
-
-Продукт.
-
-Автоматизация.
-
-Трафик.
-
-Ответственность.</p>
-
-        <div class="hero-stats" style="margin-top:30px;display:grid;grid-template-columns:repeat(4,1fr);gap:10px;max-width:520px">
-          <div class="statbox" style="display:flex;flex-direction:column;align-items:center;gap:8px;padding:16px 8px;border:1px solid rgba(210,210,210,.16);border-radius:12px;background:rgba(255,255,255,.03)">
-            <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#d8d8d8" stroke-width="1.6"><path d="M8 4 3 12l5 8M16 4l5 8-5 8"></path></svg>
-            <div style="font:600 18px 'Oswald';color:#f2f2f2">10+</div>
-            <div style="font:500 9.5px 'Oswald';letter-spacing:.05em;text-transform:uppercase;color:#8f8f8f;text-align:center;line-height:1.3">лет опыта<br>разработки</div>
-          </div>
-          <div class="statbox" style="display:flex;flex-direction:column;align-items:center;gap:8px;padding:16px 8px;border:1px solid rgba(210,210,210,.16);border-radius:12px;background:rgba(255,255,255,.03)">
-            <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#d8d8d8" stroke-width="1.6"><circle cx="12" cy="12" r="8.5"></circle><circle cx="12" cy="12" r="4.5"></circle><circle cx="12" cy="12" r=".6" fill="#d8d8d8"></circle></svg>
-            <div style="font:600 18px 'Oswald';color:#f2f2f2">100+</div>
-            <div style="font:500 9.5px 'Oswald';letter-spacing:.05em;text-transform:uppercase;color:#8f8f8f;text-align:center;line-height:1.3">рекламных<br>кампаний</div>
-          </div>
-          <div class="statbox" style="display:flex;flex-direction:column;align-items:center;gap:8px;padding:16px 8px;border:1px solid rgba(210,210,210,.16);border-radius:12px;background:rgba(255,255,255,.03)">
-            <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#d8d8d8" stroke-width="1.6"><path d="M3 19h18M6 19V9l4 3 4-6 4 4v9"></path></svg>
-            <div style="font:600 18px 'Oswald';color:#f2f2f2">2.5M+</div>
-            <div style="font:500 9.5px 'Oswald';letter-spacing:.05em;text-transform:uppercase;color:#8f8f8f;text-align:center;line-height:1.3">потрачено<br>на рекламу</div>
-          </div>
-          <div class="statbox" style="display:flex;flex-direction:column;align-items:center;gap:8px;padding:16px 8px;border:1px solid rgba(210,210,210,.16);border-radius:12px;background:rgba(255,255,255,.03)">
-            <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#d8d8d8" stroke-width="1.6"><path d="M22 2 11 13"></path><path d="M22 2 15 22l-4-9-9-4 20-7z"></path></svg>
-            <div style="font:600 18px 'Oswald';color:#f2f2f2">50+</div>
-            <div style="font:500 9.5px 'Oswald';letter-spacing:.05em;text-transform:uppercase;color:#8f8f8f;text-align:center;line-height:1.3">проектов<br>в Telegram</div>
-          </div>
-        </div>
-
-        <a class="hero-cta" href="https://t.me/iamSayfullah" target="_blank" rel="noopener" style="margin-top:32px;display:inline-flex;align-items:center;justify-content:space-between;gap:54px;min-width:320px;padding:20px 28px;border-radius:12px;border:1px solid rgba(0,0,0,.14);background:linear-gradient(#f5f5f5,#e3e3e3);color:#141414;text-decoration:none;font:600 12.5px 'Oswald';letter-spacing:.22em;text-transform:uppercase;box-shadow:0 16px 34px rgba(10,10,10,.2)">
+        <a class="hero-cta" href="https://t.me/iamSayfullah" target="_blank" rel="noopener" style="margin-top:40px;display:inline-flex;align-items:center;justify-content:space-between;gap:54px;min-width:320px;padding:20px 28px;border-radius:12px;border:1px solid rgba(0,0,0,.14);background:linear-gradient(#f5f5f5,#e3e3e3);color:#141414;text-decoration:none;font:600 12.5px 'Oswald';letter-spacing:.22em;text-transform:uppercase;box-shadow:0 16px 34px rgba(10,10,10,.2)">
           Получить разбор
           <svg class="ctaArr" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.4" style="transition:transform .4s cubic-bezier(.2,.7,.2,1)"><path d="M7 17 17 7M9 7h8v8"></path></svg>
         </a>
@@ -388,6 +365,11 @@
 
   <!-- 06 · ГАРАНТИИ -->
   <section id="safe" style="position:relative;z-index:5;background:linear-gradient(rgba(12,12,12,.66),rgba(6,6,6,.84)),url('photos/komp.png') center/cover;padding:clamp(88px,13vh,158px) clamp(22px,4vw,72px);overflow:hidden">
+    <svg viewBox="0 0 120 90" style="position:absolute;top:clamp(24px,4vh,48px);right:clamp(24px,4vw,64px);width:clamp(90px,10vw,140px);height:auto;opacity:.05;pointer-events:none" fill="none" stroke="#e7e7e7" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M60 20c-14 0-24 11-24 25 0 10 5 17 11 22-2 4-6 6-10 7 6 3 13 2 17-2 2 2 4 3 6 3s4-1 6-3c4 4 11 5 17 2-4-1-8-3-10-7 6-5 11-12 11-22 0-14-10-25-24-25z"></path>
+      <path d="M38 30c-6-4-10-10-9-17 6 1 11 5 13 11M82 30c6-4 10-10 9-17-6 1-11 5-13 11"></path>
+      <path d="M52 46c1-2 3-2 4 0M64 46c1-2 3-2 4 0"></path>
+    </svg>
     <div style="position:relative;max-width:1280px;margin:0 auto;display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);gap:clamp(36px,5vw,84px);align-items:start" class="pain-grid reveal">
       <div>
         <div style="display:flex;align-items:center;gap:14px">
@@ -522,6 +504,48 @@
 </button>
 
 <script>
+  // ===== ПРЕЛОАДЕР =====
+  (function(){
+    var loader = document.getElementById('loader');
+    if(!loader) return;
+
+    function hideLoader(){
+      loader.style.opacity = '0';
+      loader.style.visibility = 'hidden';
+      loader.style.pointerEvents = 'none';
+      setTimeout(function(){ if(loader) loader.style.display = 'none'; }, 650);
+    }
+
+    // Жёсткий аварийный выход: что бы ни пошло не так — экран загрузки
+    // гарантированно исчезнет не позже, чем через 3 секунды.
+    var failsafe = setTimeout(hideLoader, 3000);
+
+    try{
+      var bar = document.getElementById('loader-bar');
+      var txt = document.getElementById('loader-txt');
+      var lion = document.getElementById('loader-lion');
+      var phrases = ['устанавливаю связь','считаю нагрузку','синхронизирую процессы','система на связи'];
+      var i = 0;
+      function next(){
+        if(i < phrases.length){
+          txt.textContent = phrases[i];
+          bar.style.width = (((i+1)/phrases.length)*100) + '%';
+          if(i === phrases.length - 1){ lion.style.opacity = '1'; }
+          i++;
+          setTimeout(next, i === phrases.length ? 550 : 480);
+        } else {
+          clearTimeout(failsafe);
+          hideLoader();
+        }
+      }
+      setTimeout(next, 220);
+    }catch(e){
+      // если что-то в анимации сломалось — не держим человека перед чёрным экраном
+      clearTimeout(failsafe);
+      hideLoader();
+    }
+  })();
+
   // reveal on scroll
   const io = new IntersectionObserver(entries=>{
     entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('is-in'); });
