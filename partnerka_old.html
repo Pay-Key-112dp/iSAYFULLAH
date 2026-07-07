@@ -40,6 +40,7 @@
     .flink:hover { color: #eef0f2 !important; }
     .faq-item { transition: background .35s, border-color .35s; }
     .faq-item:hover { background: rgba(0,0,0,.035); }
+    /* Стили для калькулятора сайта */
     #calc-range::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 24px; height: 24px; border-radius: 50%; background: #f2f1ed; border: 2px solid #16181b; cursor: pointer; box-shadow: 0 3px 10px rgba(0,0,0,.4); }
     #calc-range::-moz-range-thumb { width: 22px; height: 22px; border-radius: 50%; background: #f2f1ed; border: 2px solid #16181b; cursor: pointer; }
     .seg button { transition: border-color .3s, background .3s, color .3s; }
@@ -95,61 +96,6 @@
     }
     @media(max-width:480px) { .hero-content h1 { font-size: clamp(32px,11vw,48px) !important; } .who-grid>.pcard { flex: 0 0 82% !important; } }
     @media(max-width:390px) { .cchip { font-size: 9.5px !important; padding: 9px 12px !important; letter-spacing: .1em !important; } .chip { font-size: 9.5px !important; padding: 9px 12px !important; } }
-
-    /* === ДОПОЛНИТЕЛЬНЫЕ ПРАВИЛА ДЛЯ ПК, ЧТОБЫ HERO И BENEFITS ПОМЕЩАЛИСЬ В ОДИН ЭКРАН === */
-    @media (min-width: 1200px) {
-      #hero {
-        padding-top: 1.2vh !important;
-        padding-bottom: 1.2vh !important;
-        min-height: calc(100vh - 80px) !important;
-      }
-      #hero .hero-content {
-        padding: 28px 48px !important;
-      }
-      #hero h1 {
-        font-size: clamp(40px, 4.8vw, 68px) !important;
-        margin-top: 16px !important;
-      }
-      #hero .hero-content > div:first-of-type {
-        margin-bottom: 4px !important;
-      }
-      #hero .hero-cta {
-        margin-top: 24px !important;
-        padding: 14px 24px !important;
-        min-width: 280px !important;
-      }
-      #hero .hero-content p {
-        font-size: clamp(14px, 1vw, 16px) !important;
-        line-height: 1.5 !important;
-        margin-top: 4px !important;
-      }
-
-      #benefits {
-        padding-top: 6vh !important;
-        padding-bottom: 6vh !important;
-      }
-      #benefits .svc-grid {
-        margin-top: 2.5vh !important;
-        gap: 12px !important;
-      }
-      #benefits .pcard {
-        padding: 18px 20px 20px !important;
-      }
-      #benefits .pcard h3 {
-        font-size: 17px !important;
-      }
-      #benefits .pcard p {
-        font-size: 13px !important;
-        line-height: 1.4 !important;
-      }
-      #benefits h2 {
-        font-size: clamp(34px, 4vw, 56px) !important;
-        margin-top: 16px !important;
-      }
-      #benefits .reveal > div:first-of-type {
-        max-width: 680px !important;
-      }
-    }
   </style>
 </head>
 <body>
@@ -179,7 +125,6 @@
         <a class="navlink nav-active" href="#how" style="font:600 12px 'Oswald'; letter-spacing:.24em; text-transform:uppercase; color:#14161a; text-decoration:none;">Как работает</a>
         <a class="navlink" href="#terms" style="font:600 12px 'Oswald'; letter-spacing:.24em; text-transform:uppercase; color:#585c62; text-decoration:none;">Условия</a>
         <a class="navlink" href="#calc" style="font:600 12px 'Oswald'; letter-spacing:.24em; text-transform:uppercase; color:#585c62; text-decoration:none;">Доход</a>
-        <a class="navlink" href="#where" style="font:600 12px 'Oswald'; letter-spacing:.24em; text-transform:uppercase; color:#585c62; text-decoration:none;">Где искать</a>
         <a class="navlink" href="#faq" style="font:600 12px 'Oswald'; letter-spacing:.24em; text-transform:uppercase; color:#585c62; text-decoration:none;">Вопросы</a>
         <a class="navlink" href="#contacts" style="font:600 12px 'Oswald'; letter-spacing:.24em; text-transform:uppercase; color:#585c62; text-decoration:none;">Контакты</a>
       </nav>
@@ -194,7 +139,7 @@
 
     <!-- === HERO === -->
     <a id="top"></a>
-    <section id="hero" data-theme="light" style="position:relative; z-index:20; display:flex; flex-direction:column; min-height:calc(100vh - 92px); padding:clamp(14px,2vh,24px) clamp(16px,3vw,44px) clamp(20px,3vh,34px);">
+    <section data-theme="light" style="position:relative; z-index:20; display:flex; flex-direction:column; min-height:calc(100vh - 92px); padding:clamp(14px,2vh,24px) clamp(16px,3vw,44px) clamp(20px,3vh,34px);">
       <div class="hero-panel" style="position:relative; flex:1; min-height:0; display:flex; align-items:center; border-radius:22px; overflow:hidden; border:1px solid rgba(255,255,255,.6); box-shadow:0 1px 0 rgba(255,255,255,.7) inset, 0 26px 60px rgba(16,19,24,.2);">
         <div class="hero-bgblur" style="position:absolute; inset:-70px; background:url('images/58847cca.webp') 50% 8% / cover; filter:blur(46px) brightness(1.16) saturate(.95);"></div>
         <div style="position:absolute; inset:0; background:linear-gradient(110deg, rgba(230,233,237,.52), rgba(221,224,228,.54));"></div>
@@ -209,13 +154,8 @@
             <span style="display:block; width:40px; height:1px; background:linear-gradient(90deg,#b0aca2,transparent);"></span>
             <span style="font:600 12px 'Oswald'; letter-spacing:.32em; text-transform:uppercase; color:#82868d;">Партнёрство без формальностей</span>
           </div>
-          <h1 style="margin-top:26px; font-family:'Jost', sans-serif; font-weight:300; text-transform:uppercase; line-height:1.02; letter-spacing:.01em; color:#191b1e; font-size:clamp(46px,6.6vw,92px);">ЗНАЕШЬ ХОТЯ БЫ ОДНОГО, У КОГО ЕСТЬ БИЗНЕС?<br><span style="font-weight:500;">Этого уже достаточно.</span></h1>
-          <div style="margin-top:26px; max-width:42ch; font:400 clamp(15px,1.15vw,18px)/1.64 'Hanken Grotesk'; color:#595d63;">
-            <p style="margin:0;">Просто познакомь нас.</p>
-            <p style="margin:6px 0 0 0;">Разговор, договор и всю работу беру на себя.</p>
-            <p style="margin:6px 0 0 0;">За каждого клиента, который подпишет договор — до 10 000 ₽.</p>
-            <p style="margin:6px 0 0 0;">Выплата в день подписания.</p>
-          </div>
+          <h1 style="margin-top:26px; font-family:'Jost', sans-serif; font-weight:300; text-transform:uppercase; line-height:1.02; letter-spacing:.01em; color:#191b1e; font-size:clamp(46px,6.6vw,92px);">Ты знаешь, кому нужна<br><span style="font-weight:500;">система. Скажи мне.</span></h1>
+          <p style="margin-top:26px; max-width:42ch; font:400 clamp(15px,1.15vw,18px)/1.64 'Hanken Grotesk'; color:#595d63;">Один контакт — и дальше всё на мне: разговор с клиентом, договор, работа. За каждого, кто подписал договор — до 10 000 ₽. На счету в день подписания.</p>
           <a class="hero-cta" href="https://t.me/iamSayfullah" target="_blank" rel="noopener" style="margin-top:40px; display:inline-flex; align-items:center; justify-content:space-between; gap:54px; min-width:320px; padding:20px 28px; border-radius:12px; border:1px solid rgba(0,0,0,.14); background:linear-gradient(rgba(248,249,251,.91), rgba(236,238,242,.85)), url('images/72149afe.webp') center/220% auto; color:#191b1e; text-decoration:none; font:600 12.5px 'Oswald'; letter-spacing:.22em; text-transform:uppercase; box-shadow:0 16px 34px rgba(18,21,26,.2);">
             Стать партнёром
             <svg class="ctaArr" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.4" style="transition:transform .4s cubic-bezier(.2,.7,.2,1);"><path d="M7 17 17 7M9 7h8v8"></path></svg>
@@ -223,7 +163,7 @@
         </div>
       </div>
       <div style="margin-top:clamp(14px,2vh,22px); display:flex; align-items:flex-end; justify-content:space-between; gap:30px;">
-        <span style="font:500 12px 'Oswald'; letter-spacing:.18em; text-transform:uppercase; color:#82868d;">БЕЗ ПРОДАЖ. БЕЗ ПЕРЕГОВОРОВ. БЕЗ ВЛОЖЕНИЙ. ВЫПЛАТА В ДЕНЬ ПОДПИСАНИЯ ДОГОВОРА.</span>
+        <span style="font:500 12px 'Oswald'; letter-spacing:.18em; text-transform:uppercase; color:#82868d;">БЕЗ ВЛОЖЕНИЙ. БЕЗ РИСКА. С ВЫПЛАТОЙ В ДЕНЬ ДОГОВОРА.</span>
         <div style="display:flex; align-items:center; gap:10px; color:#82868d;">
           <span style="font:600 12px 'Oswald'; letter-spacing:.26em; text-transform:uppercase;">Листай</span>
           <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.4" style="animation:bob 2.2s ease-in-out infinite;"><path d="M12 5v14M6 13l6 6 6-6"></path></svg>
@@ -242,23 +182,23 @@
             <span style="display:block; width:38px; height:1px; background:rgba(202,207,212,.28);"></span>
             <span style="font:600 12px 'Oswald'; letter-spacing:.34em; text-transform:uppercase; color:#c3c8cf;">Схема работы</span>
           </div>
-          <h2 style="margin-top:26px; font-family:'Jost'; font-weight:300; text-transform:uppercase; line-height:1.0; letter-spacing:.01em; color:#eef0f2; font-size:clamp(40px,5vw,76px);">Всё проще, чем кажется.</h2>
+          <h2 style="margin-top:26px; font-family:'Jost'; font-weight:300; text-transform:uppercase; line-height:1.0; letter-spacing:.01em; color:#eef0f2; font-size:clamp(40px,5vw,76px);">Три шага.<br>Один контакт.</h2>
           <div style="margin-top:30px; display:flex; align-items:center; gap:16px;">
             <span style="display:block; width:46px; height:2px; background:linear-gradient(90deg,#c6cacd,transparent); flex:0 0 auto;"></span>
-            <span style="font:600 14px 'Oswald'; letter-spacing:.13em; text-transform:uppercase; color:#dce0e4;">Один контакт. Остальное полностью на мне.</span>
+            <span style="font:600 14px 'Oswald'; letter-spacing:.13em; text-transform:uppercase; color:#dce0e4;">Дальше — не твоя забота.</span>
           </div>
         </div>
         <div style="display:flex; flex-direction:column; gap:14px;">
           <div class="pcard" style="display:flex; align-items:center; justify-content:space-between; gap:20px; padding:22px 24px; background:linear-gradient(rgba(38,42,48,.66), rgba(24,27,31,.74)); border:1px solid rgba(198,205,214,.16); border-radius:14px;">
-            <div><div style="font:600 16px 'Hanken Grotesk'; color:#eef0f2; line-height:1.3;">1. Ты приводишь предпринимателя.</div><div style="margin-top:5px; font:400 14px 'Hanken Grotesk'; color:#a8adb4; line-height:1.5;">Если среди твоих знакомых есть владелец бизнеса, которому нужен сайт, реклама, CRM, приложение или автоматизация — просто познакомь его со мной.</div></div>
+            <div><div style="font:600 16px 'Hanken Grotesk'; color:#eef0f2; line-height:1.3;">1. Ты называешь имя</div><div style="margin-top:5px; font:400 14px 'Hanken Grotesk'; color:#a8adb4; line-height:1.5;">Пишешь мне, кому и что нужно. Без презентаций и подготовки.</div></div>
             <span class="px" style="flex:0 0 auto; display:grid; place-items:center; width:34px; height:34px; border:1px solid rgba(198,205,214,.3); border-radius:50%; color:#ccd2d9; transition:border-color .4s,color .4s;"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.6;"><path d="M6 6l12 12M18 6 6 18"></path></svg></span>
           </div>
           <div class="pcard" style="display:flex; align-items:center; justify-content:space-between; gap:20px; padding:22px 24px; background:linear-gradient(rgba(38,42,48,.66), rgba(24,27,31,.74)); border:1px solid rgba(198,205,214,.16); border-radius:14px;">
-            <div><div style="font:600 16px 'Hanken Grotesk'; color:#eef0f2; line-height:1.3;">2. Я беру всё на себя.</div><div style="margin-top:5px; font:400 14px 'Hanken Grotesk'; color:#a8adb4; line-height:1.5;">Созваниваюсь с клиентом, разбираю задачи, готовлю коммерческое предложение, заключаю договор и выполняю работу.</div></div>
+            <div><div style="font:600 16px 'Hanken Grotesk'; color:#eef0f2; line-height:1.3;">2. Я говорю с человеком</div><div style="margin-top:5px; font:400 14px 'Hanken Grotesk'; color:#a8adb4; line-height:1.5;">Разбираю задачу, готовлю договор, беру работу на себя.</div></div>
             <span class="px" style="flex:0 0 auto; display:grid; place-items:center; width:34px; height:34px; border:1px solid rgba(198,205,214,.3); border-radius:50%; color:#ccd2d9; transition:border-color .4s,color .4s;"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.6;"><path d="M6 6l12 12M18 6 6 18"></path></svg></span>
           </div>
           <div class="pcard" style="display:flex; align-items:center; justify-content:space-between; gap:20px; padding:22px 24px; background:linear-gradient(rgba(38,42,48,.66), rgba(24,27,31,.74)); border:1px solid rgba(198,205,214,.16); border-radius:14px;">
-            <div><div style="font:600 16px 'Hanken Grotesk'; color:#eef0f2; line-height:1.3;">3. Клиент подписал договор — ты получил деньги.</div><div style="margin-top:5px; font:400 14px 'Hanken Grotesk'; color:#a8adb4; line-height:1.5;">До 10 000 ₽ выплачиваются в день подписания договора.</div></div>
+            <div><div style="font:600 16px 'Hanken Grotesk'; color:#eef0f2; line-height:1.3;">3. Договор подписан — деньги у тебя</div><div style="margin-top:5px; font:400 14px 'Hanken Grotesk'; color:#a8adb4; line-height:1.5;">До 10 000 ₽ переводятся в тот же день.</div></div>
             <span class="px" style="flex:0 0 auto; display:grid; place-items:center; width:34px; height:34px; border:1px solid rgba(198,205,214,.3); border-radius:50%; color:#ccd2d9; transition:border-color .4s,color .4s;"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.6;"><path d="M6 6l12 12M18 6 6 18"></path></svg></span>
           </div>
         </div>
@@ -276,10 +216,10 @@
             <span style="display:block; width:38px; height:1px; background:rgba(0,0,0,.25);"></span>
             <span style="font:600 12px 'Oswald'; letter-spacing:.34em; text-transform:uppercase; color:#656a70;">Условия</span>
           </div>
-          <h2 style="margin-top:26px; font-family:'Jost'; font-weight:300; text-transform:uppercase; line-height:1.0; letter-spacing:.01em; color:#191b1e; font-size:clamp(40px,5vw,76px);">Всё честно.</h2>
+          <h2 style="margin-top:26px; font-family:'Jost'; font-weight:300; text-transform:uppercase; line-height:1.0; letter-spacing:.01em; color:#191b1e; font-size:clamp(40px,5vw,76px);">Условия на<br>одной странице</h2>
           <div style="margin-top:30px; display:flex; align-items:center; gap:16px;">
             <span style="display:block; width:46px; height:2px; background:linear-gradient(90deg,#16181b,transparent); flex:0 0 auto;"></span>
-            <span style="font:600 14px 'Oswald'; letter-spacing:.13em; text-transform:uppercase; color:#2a2d31;">Никаких скрытых условий.</span>
+            <span style="font:600 14px 'Oswald'; letter-spacing:.13em; text-transform:uppercase; color:#2a2d31;">Ни разу мелким шрифтом.</span>
           </div>
         </div>
         <div style="display:flex; flex-direction:column; gap:14px;">
@@ -343,7 +283,7 @@
     </section>
 
     <!-- === 05 · ПРЕИМУЩЕСТВА === -->
-    <section id="benefits" data-theme="dark" style="position:relative; z-index:5; background:linear-gradient(rgba(20,23,27,.55), rgba(10,12,15,.74)), url('photos/delovoy2.png') center/cover; padding:clamp(88px,13vh,158px) clamp(22px,4vw,72px); overflow:hidden;">
+    <section data-theme="dark" style="position:relative; z-index:5; background:linear-gradient(rgba(20,23,27,.55), rgba(10,12,15,.74)), url('photos/delovoy2.png') center/cover; padding:clamp(88px,13vh,158px) clamp(22px,4vw,72px); overflow:hidden;">
       <div style="position:absolute; inset:0; pointer-events:none; background:radial-gradient(54% 50% at 86% 8%, rgba(186,196,208,.12), transparent 60%), radial-gradient(50% 56% at 4% 102%, rgba(168,177,188,.09), transparent 60%);"></div>
       <div style="position:relative; max-width:1280px; margin:0 auto;" class="reveal is-in">
         <div style="max-width:760px;">
@@ -352,26 +292,23 @@
             <span style="display:block; width:38px; height:1px; background:rgba(202,207,212,.28);"></span>
             <span style="font:600 12px 'Oswald'; letter-spacing:.34em; text-transform:uppercase; color:#c3c8cf;">Почему это работает</span>
           </div>
-          <h2 style="margin-top:26px; font-family:'Jost'; font-weight:300; text-transform:uppercase; line-height:1.05; letter-spacing:.01em; color:#eef0f2; font-size:clamp(40px,5vw,76px);">Наверняка среди твоих знакомых<br>уже есть потенциальный клиент.</h2>
-          <div style="margin-top:26px; font:400 clamp(15px,1.1vw,17px)/1.62 'Hanken Grotesk'; color:#a8adb4;">
-            <p style="margin:0;">Владельцы магазинов, кафе, автосервисов, стоматологий, производств и других бизнесов регулярно ищут способы развивать своё дело.</p>
-            <p style="margin:12px 0 0 0;">Если знаешь такого человека — просто познакомь нас.</p>
-          </div>
+          <h2 style="margin-top:26px; font-family:'Jost'; font-weight:300; text-transform:uppercase; line-height:1.0; letter-spacing:.01em; color:#eef0f2; font-size:clamp(40px,5vw,76px);">Ты просто<br>знаешь людей</h2>
+          <p style="margin-top:26px; max-width:56ch; font:400 clamp(15px,1.1vw,17px)/1.62 'Hanken Grotesk'; color:#a8adb4;">Среди твоих знакомых есть те, кому нужна система: реклама, сайт, автоматизация. Назови мне их — работу и результат беру на себя я.</p>
         </div>
         <div style="margin-top:clamp(40px,5vw,64px); display:grid; grid-template-columns:repeat(4,1fr); gap:clamp(14px,1.4vw,18px);" class="svc-grid">
           <div class="pcard" style="display:flex; flex-direction:column; gap:9px; padding:26px 24px 28px; background:linear-gradient(rgba(38,42,48,.66), rgba(24,27,31,.74)); border:1px solid rgba(198,205,214,.16); border-radius:14px;">
             <span style="font:600 14px 'Oswald'; color:#ccd2d9;">01</span>
-            <h3 style="font:600 19px 'Oswald'; text-transform:uppercase; letter-spacing:.01em; color:#eef0f2; line-height:1.1;">До 10 000 ₽ за одного клиента</h3>
+            <h3 style="font:600 19px 'Oswald'; text-transform:uppercase; letter-spacing:.01em; color:#eef0f2; line-height:1.1;">До 10 000 ₽</h3>
             <p style="font:400 14px/1.55 'Hanken Grotesk'; color:#a8adb4;">за одного клиента, дошедшего до договора.</p>
           </div>
           <div class="pcard" style="display:flex; flex-direction:column; gap:9px; padding:26px 24px 28px; background:linear-gradient(rgba(38,42,48,.66), rgba(24,27,31,.74)); border:1px solid rgba(198,205,214,.16); border-radius:14px;">
             <span style="font:600 14px 'Oswald'; color:#ccd2d9;">02</span>
-            <h3 style="font:600 19px 'Oswald'; text-transform:uppercase; letter-spacing:.01em; color:#eef0f2; line-height:1.1;">Без ограничений</h3>
+            <h3 style="font:600 19px 'Oswald'; text-transform:uppercase; letter-spacing:.01em; color:#eef0f2; line-height:1.1;">Потолка нет</h3>
             <p style="font:400 14px/1.55 'Hanken Grotesk'; color:#a8adb4;">Сколько клиентов приведёшь — за столько и получишь.</p>
           </div>
           <div class="pcard" style="display:flex; flex-direction:column; gap:9px; padding:26px 24px 28px; background:linear-gradient(rgba(38,42,48,.66), rgba(24,27,31,.74)); border:1px solid rgba(198,205,214,.16); border-radius:14px;">
             <span style="font:600 14px 'Oswald'; color:#ccd2d9;">03</span>
-            <h3 style="font:600 19px 'Oswald'; text-transform:uppercase; letter-spacing:.01em; color:#eef0f2; line-height:1.1;">Всё общение с клиентом — на мне</h3>
+            <h3 style="font:600 19px 'Oswald'; text-transform:uppercase; letter-spacing:.01em; color:#eef0f2; line-height:1.1;">Работу делаю я</h3>
             <p style="font:400 14px/1.55 'Hanken Grotesk'; color:#a8adb4;">Разговор, договор, результат — не твоя часть.</p>
           </div>
           <div class="pcard" style="display:flex; flex-direction:column; gap:9px; padding:26px 24px 28px; background:linear-gradient(rgba(38,42,48,.66), rgba(24,27,31,.74)); border:1px solid rgba(198,205,214,.16); border-radius:14px;">
@@ -383,65 +320,19 @@
       </div>
     </section>
 
-    <!-- === 06 · НОВЫЙ БЛОК "ГДЕ ИСКАТЬ КЛИЕНТОВ" === -->
-    <a id="where"></a>
-    <section data-theme="dark" style="position:relative; z-index:5; background:linear-gradient(rgba(10,12,15,.88), rgba(10,12,15,.88)), url('photos/tele') center/cover; padding:clamp(88px,13vh,158px) clamp(22px,4vw,72px); overflow:hidden;">
-      <div style="position:absolute; inset:0; pointer-events:none; background:radial-gradient(54% 50% at 82% 8%, rgba(186,196,208,.08), transparent 60%), radial-gradient(50% 56% at 6% 100%, rgba(168,177,188,.06), transparent 60%);"></div>
-      <div style="position:relative; max-width:1280px; margin:0 auto;" class="reveal is-in">
-        <div style="max-width:760px;">
-          <div style="display:flex; align-items:center; gap:14px;">
-            <span style="font:600 12px 'Oswald'; letter-spacing:.06em; color:#9aa0a6;">06</span>
-            <span style="display:block; width:38px; height:1px; background:rgba(202,207,212,.28);"></span>
-            <span style="font:600 12px 'Oswald'; letter-spacing:.34em; text-transform:uppercase; color:#c3c8cf;">Где искать клиентов</span>
-          </div>
-          <h2 style="margin-top:26px; font-family:'Jost'; font-weight:300; text-transform:uppercase; line-height:1.05; letter-spacing:.01em; color:#eef0f2; font-size:clamp(40px,5vw,76px);">Первый клиент может быть ближе, чем кажется.</h2>
-          <div style="margin-top:26px; font:400 clamp(15px,1.1vw,17px)/1.62 'Hanken Grotesk'; color:#a8adb4;">
-            <p style="margin:0;">Большинство партнёров находят первого клиента среди своего окружения.</p>
-            <p style="margin:12px 0 0 0;">Не нужно искать кого-то особенного.</p>
-          </div>
-        </div>
-        <div style="margin-top:clamp(40px,5vw,64px); display:grid; grid-template-columns:repeat(2,1fr); gap:clamp(14px,1.4vw,18px);" class="svc-grid">
-          <div class="pcard" style="display:flex; flex-direction:column; gap:9px; padding:26px 24px 28px; background:linear-gradient(rgba(38,42,48,.66), rgba(24,27,31,.74)); border:1px solid rgba(198,205,214,.16); border-radius:14px;">
-            <span style="font:600 14px 'Oswald'; color:#ccd2d9;">01</span>
-            <h3 style="font:600 19px 'Oswald'; text-transform:uppercase; letter-spacing:.01em; color:#eef0f2; line-height:1.1;">Среди знакомых</h3>
-            <p style="font:400 14px/1.55 'Hanken Grotesk'; color:#a8adb4;">Вспомни друзей, родственников и знакомых, у которых уже есть свой бизнес. Очень часто первый клиент находится именно здесь.</p>
-          </div>
-          <div class="pcard" style="display:flex; flex-direction:column; gap:9px; padding:26px 24px 28px; background:linear-gradient(rgba(38,42,48,.66), rgba(24,27,31,.74)); border:1px solid rgba(198,205,214,.16); border-radius:14px;">
-            <span style="font:600 14px 'Oswald'; color:#ccd2d9;">02</span>
-            <h3 style="font:600 19px 'Oswald'; text-transform:uppercase; letter-spacing:.01em; color:#eef0f2; line-height:1.1;">На Авито</h3>
-            <p style="font:400 14px/1.55 'Hanken Grotesk'; color:#a8adb4;">Многие предприниматели размещают объявления каждый день. Если понимаешь, что человеку могут пригодиться мои услуги — познакомь нас.</p>
-          </div>
-          <div class="pcard" style="display:flex; flex-direction:column; gap:9px; padding:26px 24px 28px; background:linear-gradient(rgba(38,42,48,.66), rgba(24,27,31,.74)); border:1px solid rgba(198,205,214,.16); border-radius:14px;">
-            <span style="font:600 14px 'Oswald'; color:#ccd2d9;">03</span>
-            <h3 style="font:600 19px 'Oswald'; text-transform:uppercase; letter-spacing:.01em; color:#eef0f2; line-height:1.1;">В Яндекс Картах и 2ГИС</h3>
-            <p style="font:400 14px/1.55 'Hanken Grotesk'; color:#a8adb4;">Практически каждый бизнес оставляет контакты. Магазины. Кафе. Автосервисы. Стоматологии. Салоны красоты. Производства.</p>
-          </div>
-          <div class="pcard" style="display:flex; flex-direction:column; gap:9px; padding:26px 24px 28px; background:linear-gradient(rgba(38,42,48,.66), rgba(24,27,31,.74)); border:1px solid rgba(198,205,214,.16); border-radius:14px;">
-            <span style="font:600 14px 'Oswald'; color:#ccd2d9;">04</span>
-            <h3 style="font:600 19px 'Oswald'; text-transform:uppercase; letter-spacing:.01em; color:#eef0f2; line-height:1.1;">Не продавай</h3>
-            <p style="font:400 14px/1.55 'Hanken Grotesk'; color:#a8adb4;">Тебе не нужно убеждать человека. Достаточно познакомить нас. Всю дальнейшую работу беру на себя.</p>
-          </div>
-        </div>
-        <div style="margin-top:clamp(44px,6vw,72px); max-width:600px; border-top:1px solid rgba(198,205,214,.16); padding-top:32px;">
-          <h3 style="font-family:'Jost'; font-weight:300; text-transform:uppercase; letter-spacing:.01em; color:#eef0f2; font-size:clamp(28px,3.6vw,44px); line-height:1.05;">Главное — не опыт.</h3>
-          <p style="margin-top:16px; font:400 clamp(15px,1.1vw,17px)/1.6 'Hanken Grotesk'; color:#a8adb4;">Нужен всего один человек, которому действительно могут быть полезны мои услуги. Этого уже достаточно, чтобы начать.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- === 07 · FAQ === -->
+    <!-- === 06 · FAQ === -->
     <a id="faq"></a>
     <section data-theme="light" style="position:relative; z-index:5; background:linear-gradient(#d1d5da,#c4c8ce); padding:clamp(80px,11vh,140px) clamp(22px,4vw,72px); overflow:hidden;">
       <div style="position:relative; max-width:1080px; margin:0 auto;" class="reveal is-in">
         <div style="display:flex; align-items:center; gap:14px;">
-          <span style="font:600 12px 'Oswald'; letter-spacing:.06em; color:#656a70;">07</span>
+          <span style="font:600 12px 'Oswald'; letter-spacing:.06em; color:#656a70;">06</span>
           <span style="display:block; width:38px; height:1px; background:rgba(0,0,0,.25);"></span>
           <span style="font:600 12px 'Oswald'; letter-spacing:.34em; text-transform:uppercase; color:#656a70;">Вопросы</span>
         </div>
         <h2 style="margin-top:22px; font-family:'Jost'; font-weight:300; text-transform:uppercase; line-height:1.0; letter-spacing:.01em; color:#191b1e; font-size:clamp(38px,4.6vw,68px);">Всё, что<br>обычно спрашивают</h2>
         <div style="margin-top:clamp(34px,4vw,52px); display:flex; flex-direction:column;">
           <div class="faq-item" style="padding:26px 20px; border-top:1px solid rgba(0,0,0,.13); border-radius:10px;"><h3 style="font:600 19px 'Oswald'; text-transform:uppercase; letter-spacing:.01em; color:#16181b; line-height:1.2;">Сколько я получу за клиента?</h3><p style="margin-top:9px; max-width:80ch; font:400 15px/1.6 'Hanken Grotesk'; color:#4c5056;">До 10 000 ₽ за каждого клиента, дошедшего до договора. Деньги приходят в день подписания.</p></div>
-          <div class="faq-item" style="padding:26px 20px; border-top:1px solid rgba(0,0,0,.13); border-radius:10px;"><h3 style="font:600 19px 'Oswald'; text-transform:uppercase; letter-spacing:.01em; color:#16181b; line-height:1.2;">Что от меня требуется?</h3><div style="margin-top:9px; max-width:80ch; font:400 15px/1.6 'Hanken Grotesk'; color:#4c5056;"><p style="margin:0;">Просто привести предпринимателя, которому могут быть полезны мои услуги.</p><p style="margin:6px 0 0 0;">Сайт. Реклама. Автоматизация. Приложение. CRM. Фирменный стиль.</p><p style="margin:6px 0 0 0;">Всю дальнейшую работу полностью беру на себя.</p></div></div>
+          <div class="faq-item" style="padding:26px 20px; border-top:1px solid rgba(0,0,0,.13); border-radius:10px;"><h3 style="font:600 19px 'Oswald'; text-transform:uppercase; letter-spacing:.01em; color:#16181b; line-height:1.2;">Что от меня требуется?</h3><p style="margin-top:9px; max-width:80ch; font:400 15px/1.6 'Hanken Grotesk'; color:#4c5056;">Один контакт: человек, которому нужен сайт, бот, приложение, реклама или фирменный стиль. Разговор, договор и результат — моя часть.</p></div>
           <div class="faq-item" style="padding:26px 20px; border-top:1px solid rgba(0,0,0,.13); border-radius:10px;"><h3 style="font:600 19px 'Oswald'; text-transform:uppercase; letter-spacing:.01em; color:#16181b; line-height:1.2;">Какие условия участия?</h3><p style="margin-top:9px; max-width:80ch; font:400 15px/1.6 'Hanken Grotesk'; color:#4c5056;">Подписаться на мой Telegram-канал, поделиться сайтом в статусе, и попросить приглашённого назвать твоё имя при первом обращении.</p></div>
           <div class="faq-item" style="padding:26px 20px; border-top:1px solid rgba(0,0,0,.13); border-radius:10px;"><h3 style="font:600 19px 'Oswald'; text-transform:uppercase; letter-spacing:.01em; color:#16181b; line-height:1.2;">Как понять, что клиент — «мой»?</h3><p style="margin-top:9px; max-width:80ch; font:400 15px/1.6 'Hanken Grotesk'; color:#4c5056;">Он закреплён за тобой, если назвал твоё имя при первом обращении. Проще всего — прислать мне контакт заранее или попросить упомянуть тебя в первом сообщении.</p></div>
           <div class="faq-item" style="padding:26px 20px; border-top:1px solid rgba(0,0,0,.13); border-bottom:1px solid rgba(0,0,0,.13); border-radius:10px;"><h3 style="font:600 19px 'Oswald'; text-transform:uppercase; letter-spacing:.01em; color:#16181b; line-height:1.2;">Нужно ли что-то вкладывать?</h3><p style="margin-top:9px; max-width:80ch; font:400 15px/1.6 'Hanken Grotesk'; color:#4c5056;">Нет. Ни денег, ни времени сверх одного сообщения мне.</p></div>
@@ -460,7 +351,7 @@
               </span>
               <span style="font:700 15px 'Oswald'; letter-spacing:.08em; text-transform:uppercase; color:#eef0f2;">iSAYFULLAH</span>
             </div>
-            <p style="margin-top:16px; font:400 14px/1.6 'Hanken Grotesk'; color:#9aa0a6;">Есть знакомый предприниматель?<br>Приведи его ко мне.<br>Всё остальное — моя работа.</p>
+            <p style="margin-top:16px; font:400 14px/1.6 'Hanken Grotesk'; color:#9aa0a6;">Один контакт — до 10 000 ₽. Всю работу с клиентом беру на себя.</p>
             <a href="index.html" class="flink" style="display:inline-block; margin-top:16px; font:600 12px 'Oswald'; letter-spacing:.16em; text-transform:uppercase; color:#c3c8cf; text-decoration:none; border-bottom:1px solid rgba(198,205,214,.3); padding-bottom:3px;">На главную</a>
           </div>
 
@@ -515,7 +406,6 @@
       <a href="#how" data-menu-close style="font:600 17px 'Oswald'; letter-spacing:.22em; text-transform:uppercase; color:#9aa0a6; text-decoration:none;">Как работает</a>
       <a href="#terms" data-menu-close style="font:600 17px 'Oswald'; letter-spacing:.22em; text-transform:uppercase; color:#9aa0a6; text-decoration:none;">Условия</a>
       <a href="#calc" data-menu-close style="font:600 17px 'Oswald'; letter-spacing:.22em; text-transform:uppercase; color:#9aa0a6; text-decoration:none;">Доход</a>
-      <a href="#where" data-menu-close style="font:600 17px 'Oswald'; letter-spacing:.22em; text-transform:uppercase; color:#9aa0a6; text-decoration:none;">Где искать</a>
       <a href="#faq" data-menu-close style="font:600 17px 'Oswald'; letter-spacing:.22em; text-transform:uppercase; color:#9aa0a6; text-decoration:none;">Вопросы</a>
       <a href="#contacts" data-menu-close style="font:600 17px 'Oswald'; letter-spacing:.22em; text-transform:uppercase; color:#9aa0a6; text-decoration:none;">Контакты</a>
       <a href="https://t.me/iamSayfullah" data-menu-close target="_blank" rel="noopener" style="margin-top:10px; font:600 12px 'Oswald'; letter-spacing:.22em; text-transform:uppercase; color:#f1f2f3; border:1px solid rgba(202,207,212,.28); padding:15px 28px; border-radius:11px; text-decoration:none;">Написать в Telegram</a>
@@ -557,12 +447,13 @@
       countEl.textContent = val;
       var total = val * 10000;
       outEl.textContent = total.toLocaleString('ru-RU') + ' ₽';
+      // Обновляем фон ползунка
       var pct = ((val - 1) / 19) * 100;
       range.style.background = 'linear-gradient(90deg, rgb(232,231,226) ' + pct + '%, rgba(198,205,214,0.22) ' + pct + '%)';
     }
 
     range.addEventListener('input', updateCalc);
-    updateCalc();
+    updateCalc(); // инициализация
   </script>
 </body>
 </html>
