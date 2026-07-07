@@ -1,372 +1,1245 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="format-detection" content="telephone=no">
-  <title>Сайт на разработке — iSAYFULLAH</title>
-  <meta name="description" content="Сайт находится в процессе создания. Завтра здесь появится контент.">
-  <meta name="theme-color" content="#0a0a0a">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&family=Oswald:wght@300;400;500;600;700&family=Hanken+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    html, body {
-      background: #0a0a0a;
-      height: 100%;
-    }
-    body {
-      font-family: 'Hanken Grotesk', system-ui, sans-serif;
-      -webkit-font-smoothing: antialiased;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      padding: 24px 20px;
-      overflow: hidden;
-      position: relative;
-    }
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="format-detection" content="telephone=no">
+<title>iSAYFULLAH — прокачка бизнеса: клиенты, автоматизация, рост</title>
+<meta name="description" content="Больше клиентов, меньше рутины. Сайты, продвижение, автоматизация, ИИ и дополнительные возможности для роста бизнеса. Работаю по СНГ.">
+<meta name="theme-color" content="#0a0a0a">
 
-    /* ===== ФОН — полностью как на главном сайте ===== */
-    .bg-layer {
-      position: fixed;
-      inset: 0;
-      z-index: 0;
-      background: radial-gradient(130% 92% at 50% -12%, #eaeaea 0%, #dcdcdc 48%, #cfcfcf 100%);
-      animation: fadeBg 2.8s ease-out forwards;
-    }
-    @keyframes fadeBg {
-      0% { opacity: 0; }
-      100% { opacity: 1; }
-    }
+<!-- Шрифты: PP Neue Montreal + Playfair Display (курсив + прямое начертание) -->
+<link href="https://fonts.cdnfonts.com/css/pp-neue-montreal" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
 
-    .bg-dark {
-      position: absolute;
-      inset: 0;
-      background: #0a0a0a;
-    }
 
-    /* Фото с эффектами — как на главном сайте */
-    .bg-photo {
-      position: absolute;
-      inset: 0;
-      background: url('photos/zapret.png') 50% 22% / cover no-repeat;
-      filter: grayscale(1) contrast(1.12) brightness(0.85);
-      -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 14%, #000 86%, transparent 100%);
-      mask-image: linear-gradient(90deg, transparent 0%, #000 14%, #000 86%, transparent 100%);
-      animation: hzoom 9s cubic-bezier(.2,.7,.2,1) both;
-    }
-    @keyframes hzoom {
-      from { transform: scale(1.07); }
-      to { transform: scale(1); }
-    }
+<style>
+  /* ===== ГЛОБАЛЬНАЯ ТИПОГРАФИКА ===== */
+  html {
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-kerning: normal;
+    font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+  }
 
-    /* Затемнение поверх фото */
-    .bg-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(110deg, rgba(10,10,10,.62), rgba(8,8,8,.58));
-    }
+  body {
+    font-family: "PP Neue Montreal", sans-serif;
+    font-weight: 400;
+    line-height: 1.7;
+    color: #141414;
+    background: #0a0a0a;
+  }
 
-    .container {
-      position: relative;
-      z-index: 1;
-      max-width: 600px;
-      width: 100%;
-      text-align: center;
-      /* Сдвиг влево на 5% */
-      transform: translateX(-10%);
-    }
+  /* ===== БАЗОВЫЕ СТИЛИ ===== */
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:#0a0a0a}
+  html{scroll-behavior:smooth;scroll-padding-top:clamp(84px,12vh,116px)}
+  ::selection{background:rgba(215,215,215,.25)}
 
-    /* Логотип — как на главном сайте */
-    .logo {
-      display: inline-flex;
-      align-items: center;
-      gap: 13px;
-      margin-bottom: 48px;
-      text-decoration: none;
-    }
-    .logo-badge {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 40px;
-      height: 40px;
-      border-radius: 10px;
-      background: linear-gradient(150deg, #232323, #050505);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.07), 0 4px 12px rgba(0,0,0,.3);
-    }
-    .logo-badge span {
-      font: 700 16px 'Oswald', sans-serif;
-      color: #e7e7e7;
-      letter-spacing: .04em;
-    }
-    .logo-text {
-      display: flex;
-      flex-direction: column;
-      line-height: 1.05;
-      align-items: flex-start;
-    }
-    .logo-text .brand {
-      font: 700 13px 'Oswald', sans-serif;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      color: #f0f0f0;
-    }
-    .logo-text .sub {
-      font: 600 11px 'Oswald', sans-serif;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-      color: #787878;
-      margin-top: 2px;
-    }
+  /* ===== ПРЕЛОАДЕР ===== */
+  #loader {
+    position:fixed; inset:0; z-index:999;
+    background:#0a0a0a;
+    display:flex; align-items:center; justify-content:center;
+    transition: opacity 1s ease, visibility 1s ease;
+    opacity:1; visibility:visible;
+  }
+  #loader.hidden {
+    opacity:0; visibility:hidden;
+    pointer-events:none;
+  }
+  .preloader-word {
+    font-family: "PP Neue Montreal", sans-serif;
+    font-weight: 300;
+    font-size: clamp(2rem, 6vw, 4rem);
+    letter-spacing: 0;
+    color: #f0f0f0;
+    display: flex;
+    gap: 0.04em;
+  }
+  .preloader-word span {
+    display: inline-block;
+    opacity:0;
+    animation: wave 1.6s cubic-bezier(0.2, 0.9, 0.4, 1) forwards;
+    will-change: transform, opacity;
+  }
+  @keyframes wave {
+    0%   { transform: translateY(20px); opacity: 0; }
+    20%  { opacity: 1; }
+    40%  { transform: translateY(-8px); opacity: 1; }
+    70%  { transform: translateY(-8px); opacity: 1; }
+    100% { transform: translateY(0); opacity: 1; }
+  }
 
-    /* Иконка — стиль как на главном */
-    .status-icon {
-      margin-bottom: 28px;
-      display: flex;
-      justify-content: center;
-      opacity: 0.7;
-    }
-    .status-icon svg {
-      width: 44px;
-      height: 44px;
-      color: #e7e7e7;
-      stroke-width: 1.4;
-      fill: none;
-    }
+  /* ===== ОБНОВЛЁННАЯ ТИПОГРАФИКА ===== */
+  /* Hero заголовок – Light для основной части, акцент – Playfair Display Italic */
+  .hero-title {
+    font-family: "PP Neue Montreal", sans-serif;
+    font-weight: 300;
+    line-height: 0.92;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: #f2f2f2;
+  }
+  .hero-title .hero-light {
+    font-weight: 300;
+    font-size: clamp(38px, 5.6vw, 72px);
+    display: block;
+    letter-spacing: 0.02em;
+  }
+  .hero-title .hero-accent {
+    font-family: "Playfair Display", serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(48px, 7.2vw, 96px);
+    display: block;
+    color: #f2f2f2;
+    letter-spacing: 0.02em;
+  }
 
-    /* Заголовок — как на главном */
-    h1 {
-      font-family: 'Jost', sans-serif;
-      font-weight: 300;
-      font-size: clamp(38px, 7vw, 72px);
-      color: #f2f2f2;
-      letter-spacing: .01em;
-      line-height: 1.02;
-      text-transform: uppercase;
-      margin-bottom: 12px;
-      text-shadow: 0 2px 40px rgba(0,0,0,.4);
-    }
-    h1 span {
-      font-weight: 500;
-      display: inline-block;
-    }
+  /* Заголовки секций – Light (оставляем для крупных секционных заголовков) */
+  .section-title {
+    font-family: "PP Neue Montreal", sans-serif;
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: #141414;
+  }
+  .section-title-light {
+    font-family: "PP Neue Montreal", sans-serif;
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: #f0f0f0;
+  }
 
-    .message {
-      font-size: clamp(15px, 1.8vw, 20px);
-      font-weight: 400;
-      color: #b4b4b4;
-      line-height: 1.6;
-      letter-spacing: .02em;
-      text-shadow: 0 2px 20px rgba(0,0,0,.3);
-    }
-    .sub-message {
-      font-size: clamp(13px, 1.4vw, 16px);
-      font-weight: 400;
-      color: #8a8a8a;
-      margin-top: 4px;
-      margin-bottom: 40px;
-      letter-spacing: .04em;
-      text-shadow: 0 2px 16px rgba(0,0,0,.3);
-    }
+  /* Подзаголовки секций – Medium (500) */
+  .section-sub {
+    font-family: "PP Neue Montreal", sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    letter-spacing: 0;
+    color: rgba(255,255,255,0.6);
+  }
+  .section-sub-dark {
+    font-family: "PP Neue Montreal", sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    letter-spacing: 0;
+    color: rgba(0,0,0,0.5);
+  }
 
-    /* Три точки */
-    .dots-wrap {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 44px;
-      height: 20px;
-    }
-    .dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: #b4b4b4;
-      animation: dotPulse 1.6s ease-in-out infinite both;
-    }
-    .dot:nth-child(1) { animation-delay: 0s; }
-    .dot:nth-child(2) { animation-delay: 0.3s; }
-    .dot:nth-child(3) { animation-delay: 0.6s; }
+  /* Основной текст – Book (400) */
+  .body-text {
+    font-family: "PP Neue Montreal", sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.7;
+    letter-spacing: 0;
+    max-width: 42rem;
+  }
+  .body-text-sm {
+    font-family: "PP Neue Montreal", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.7;
+    letter-spacing: 0;
+    max-width: 42rem;
+  }
 
-    @keyframes dotPulse {
-      0%, 80%, 100% {
-        transform: scale(0.6);
-        opacity: 0.25;
-      }
-      40% {
-        transform: scale(1);
-        opacity: 1;
-      }
-    }
+  /* Заголовки карточек – Medium (500) */
+  .card-title {
+    font-family: "PP Neue Montreal", sans-serif;
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    color: #111;
+  }
+  .card-title-light {
+    font-family: "PP Neue Montreal", sans-serif;
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    color: #f0f0f0;
+  }
 
-    /* Кнопки — стиль hero-cta с главного сайта */
-    .actions {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 14px;
-      margin-top: 4px;
-    }
+  /* Описание в карточках – Book (400) */
+  .card-desc {
+    font-family: "PP Neue Montreal", sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.7;
+    letter-spacing: 0;
+    max-width: 42rem;
+  }
+  .card-desc-light {
+    font-family: "PP Neue Montreal", sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.7;
+    letter-spacing: 0;
+    max-width: 42rem;
+    color: #a8a8a8;
+  }
 
-    .action-link {
-      display: inline-flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-      font: 600 12px 'Oswald', sans-serif;
-      letter-spacing: .22em;
-      text-transform: uppercase;
-      color: #141414;
-      text-decoration: none;
-      padding: 18px 28px;
-      border-radius: 12px;
-      border: 1px solid rgba(0,0,0,.14);
-      background: linear-gradient(#f5f5f5, #e3e3e3);
-      box-shadow: 0 16px 34px rgba(10,10,10,.2);
-      transition: transform .35s, box-shadow .4s;
-      min-width: 200px;
-    }
-    .action-link:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 20px 42px rgba(10,10,10,.3);
-    }
-    .action-link svg {
-      width: 14px;
-      height: 14px;
-      stroke: currentColor;
-      stroke-width: 1.4;
-      fill: none;
-      transition: transform .4s cubic-bezier(.2,.7,.2,1);
-    }
-    .action-link:hover svg {
-      transform: translate(5px, -5px);
-    }
+  /* Кнопки – Medium (500) */
+  .btn {
+    font-family: "PP Neue Montreal", sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
 
-    .action-link.partner {
-      background: linear-gradient(#2a2a2a, #161616);
-      color: #f0f0f0;
-      border-color: rgba(255,255,255,.16);
-      box-shadow: 0 16px 34px rgba(0,0,0,.3);
-    }
-    .action-link.partner:hover {
-      background: linear-gradient(#3a3a3a, #222);
-      border-color: rgba(255,255,255,.3);
-    }
+  /* Меню и навигация – Medium (500) */
+  .nav-link {
+    font-family: "PP Neue Montreal", sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #585858;
+    transition: color .3s;
+  }
+  .nav-link:hover { color: #141414; }
 
-    /* ===== АДАПТИВНОСТЬ ===== */
-    @media (max-width: 1024px) {
-      .container {
-        transform: translateX(-3%);
-      }
-    }
+  /* Номера секций – Book (400) с увеличенным letter-spacing */
+  .section-number {
+    font-family: "PP Neue Montreal", sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    letter-spacing: 0.18em;
+    color: #9a9a9a;
+  }
 
-    @media (max-width: 768px) {
-      .container {
-        transform: translateX(0);
-        text-align: center;
-      }
-      .logo {
-        justify-content: center;
-      }
-      .logo-text {
-        align-items: center;
-      }
-    }
+  /* Eyebrow / подписи – Book с интервалом */
+  .eyebrow {
+    font-family: "PP Neue Montreal", sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    letter-spacing: 0.18em;
+    text-transform: none;
+    color: #9a9a9a;
+  }
 
-    @media (max-width: 480px) {
-      .logo-badge {
-        width: 34px;
-        height: 34px;
-      }
-      .logo-badge span {
-        font-size: 14px;
-      }
-      .logo-text .brand {
-        font-size: 12px;
-      }
-      .logo-text .sub {
-        font-size: 10px;
-      }
-      .action-link {
-        padding: 14px 20px;
-        font-size: 11px;
-        min-width: 160px;
-        gap: 16px;
-      }
-      .actions {
-        gap: 12px;
-      }
-      .dot {
-        width: 6px;
-        height: 6px;
-      }
-    }
-  </style>
+  /* FAQ вопрос – Medium (500) */
+  .faq-q {
+    font-family: "PP Neue Montreal", sans-serif;
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    color: #111;
+  }
+  .faq-q-light {
+    font-family: "PP Neue Montreal", sans-serif;
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    color: #f0f0f0;
+  }
+
+  /* FAQ ответ – Book (400) */
+  .faq-a {
+    font-family: "PP Neue Montreal", sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.7;
+    letter-spacing: 0;
+    max-width: 42rem;
+    color: #4c4c4c;
+  }
+  .faq-a-light {
+    font-family: "PP Neue Montreal", sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.7;
+    letter-spacing: 0;
+    max-width: 42rem;
+    color: #a8a8a8;
+  }
+
+  /* ===== УТОЧНЕНИЯ ПО КАРТОЧКАМ ===== */
+  .pcard, .orow, .svc, .gcard {
+    transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s ease, border-color 0.4s ease;
+  }
+  .pcard:hover, .svc:hover, .gcard:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+  }
+  .pcard:hover .icon-wrap, .svc:hover .icon-wrap, .gcard:hover .icon-wrap {
+    transform: translateX(3px);
+  }
+  .pcard, .svc, .gcard {
+    transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s ease, border-color 0.4s ease;
+  }
+
+  /* Увеличенный отступ между заголовком и описанием в карточках */
+  .card-title, .card-title-light {
+    margin-bottom: 18px;
+  }
+
+  /* ===== ИКОНКИ ===== */
+  .icon-wrap {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    color: #e7e7e7;
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+  }
+  .icon-wrap svg {
+    width: 20px;
+    height: 20px;
+    stroke-width: 1.5;
+    stroke: currentColor;
+    fill: none;
+  }
+
+  /* Специальный цвет для иконок в hero-side */
+  .hero-side .icon-wrap {
+    color: #e7e7e7;
+    background: rgba(255,255,255,0.06);
+    border-radius: 9px;
+    padding: 8px;
+  }
+
+  /* ===== АНИМАЦИЯ ПОЯВЛЕНИЯ (blur + translate) ===== */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px) blur(8px);
+    transition: opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1), filter 0.9s cubic-bezier(0.16,1,0.3,1);
+  }
+  .reveal.is-in {
+    opacity: 1;
+    transform: translateY(0) blur(0);
+  }
+
+  /* Каскадное появление для hero-side */
+  .hero-side .sidecard {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .hero-side .sidecard:nth-child(1) { transition-delay: 0.0s; }
+  .hero-side .sidecard:nth-child(2) { transition-delay: 0.1s; }
+  .hero-side .sidecard:nth-child(3) { transition-delay: 0.2s; }
+  .hero-side .sidecard:nth-child(4) { transition-delay: 0.3s; }
+  .hero-side.loaded .sidecard {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ===== СТИЛИ ДЛЯ HERO-SIDE (правые карточки) ===== */
+  .sidecard {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 18px;
+    background: rgba(18,18,18,.72);
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(210,210,210,.16);
+    border-radius: 12px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    cursor: default;
+  }
+  .sidecard:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+    border-color: rgba(210,210,210,.35);
+  }
+  .sidecard .side-title {
+    font-family: "PP Neue Montreal", sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    color: #f0f0f0;
+    line-height: 1.25;
+  }
+  .sidecard .side-desc {
+    font-family: "PP Neue Montreal", sans-serif;
+    font-weight: 400;
+    font-size: 12.5px;
+    color: #9a9a9a;
+    line-height: 1.4;
+  }
+
+  /* ===== ОСТАЛЬНЫЕ СТИЛИ (СОХРАНЯЕМ) ===== */
+  @keyframes hzoom{from{transform:scale(1.07)}to{transform:scale(1)}}
+  @keyframes bob{0%,100%{transform:translateY(0);opacity:.5}50%{transform:translateY(6px);opacity:1}}
+  .orow{transition:background .35s}
+  .orow:hover{background:rgba(0,0,0,.035)}
+  .orow:hover .ock{border-color:#111 !important;background:#111 !important;color:#fff !important}
+  .navlink{position:relative;transition:color .3s}
+  .navlink::after{content:"";position:absolute;left:0;right:100%;bottom:-7px;height:1px;background:rgba(20,20,20,.45);transition:right .4s cubic-bezier(.2,.7,.2,1)}
+  .navlink:hover::after{right:0}
+  .tgbtn{transition:filter .4s,box-shadow .4s}
+  .tgbtn:hover{filter:brightness(1.05) !important;box-shadow:0 6px 16px rgba(10,10,10,.22) !important}
+  .hero-cta{transition:transform .35s,box-shadow .4s}
+  .hero-cta:hover{transform:translateY(-2px);box-shadow:0 20px 42px rgba(10,10,10,.3) !important}
+  .hero-cta:hover .ctaArr{transform:translate(5px,-5px)}
+  .burger{transition:color .45s ease}
+  @media(max-width:860px){.duo-grid{grid-template-columns:1fr !important}}
+  .svc{transition:border-color .4s,transform .4s,box-shadow .4s}
+  .svc:hover{border-color:rgba(0,0,0,.28) !important;transform:translateY(-6px);box-shadow:0 18px 40px rgba(0,0,0,.12)}
+  .svc .svcbar{transition:width .5s cubic-bezier(.2,.7,.2,1)}
+  .svc:hover .svcbar{width:100%}
+  .svc-cta:hover{border-color:rgba(255,255,255,.4) !important}
+  .svc-cta:hover .ctaArr2{transform:translate(5px,-5px)}
+  @media(max-width:1040px){.svc-grid{grid-template-columns:repeat(2,1fr) !important}}
+  @media(max-width:640px){.svc-grid{grid-template-columns:1fr !important}}
+  .svc{
+    background:linear-gradient(#fbfbfa,#efeeec) !important;
+    border-color:rgba(0,0,0,.13) !important;
+    box-shadow:0 1px 0 rgba(255,255,255,.75) inset, 0 14px 28px -16px rgba(0,0,0,.16);
+  }
+  .svc:hover{box-shadow:0 1px 0 rgba(255,255,255,.85) inset, 0 22px 40px -16px rgba(0,0,0,.2) !important}
+
+  .gcard{transition:border-color .4s,transform .4s,box-shadow .4s}
+  .gcard:hover{border-color:rgba(210,210,210,.4) !important;transform:translateY(-6px);box-shadow:0 18px 40px rgba(0,0,0,.12)}
+  .gcard:hover .gck{border-color:#e0e0e0 !important;background:#e0e0e0 !important;color:#111 !important}
+
+  /* ============================================================ */
+  /* СЕРИФНАЯ ИДЕНТИЧНОСТЬ ДЛЯ СВЕТЛЫХ КАРТОЧНЫХ СЕКЦИЙ           */
+  /* (Skills / Order / Call) — Playfair Display, капс, трекинг    */
+  /* ============================================================ */
+  .title-serif{
+    font-family:"Playfair Display",serif;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:.02em;
+    line-height:1.15;
+    color:#111;
+  }
+  .num-serif{
+    font-family:"Playfair Display",serif;
+    font-weight:600;
+    letter-spacing:.06em;
+    color:#8a8a8a;
+  }
+
+  /* Бейдж группы A/B/C — кружок вместо голой буквы */
+  .grp-badge{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:32px;height:32px;border-radius:50%;
+    border:1px solid rgba(0,0,0,.28);
+    font-family:"Playfair Display",serif;font-weight:700;font-size:14px;
+    color:#141414;flex-shrink:0;
+  }
+  .grp-title{
+    font-family:"Playfair Display",serif;
+    font-weight:700;
+    font-size:17px;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:#141414;
+  }
+  .grp-divider{
+    height:1px;background:linear-gradient(90deg, rgba(0,0,0,.16), transparent 85%);
+    flex:1;margin-left:6px;
+  }
+  .grp-block + .grp-block{
+    margin-top:clamp(48px,3.6vw,56px);
+    padding-top:40px;
+    border-top:1px solid rgba(0,0,0,.09);
+  }
+
+  /* Верхняя полоска карточки Skills/Call — жива в покое, не только на hover */
+  .svcbar{width:34px !important}
+  .svc:hover .svcbar{width:100% !important}
+
+  /* Лёгкая светлая "каменная" текстура для карточек Call (в стиле референса) */
+  .lt-marble{
+    position:relative;
+    background-color:#efeeec !important;
+    background-image:
+      radial-gradient(420px 260px at 12% -14%, rgba(255,255,255,.85), transparent 62%),
+      radial-gradient(360px 240px at 108% 118%, rgba(0,0,0,.05), transparent 60%),
+      repeating-linear-gradient(150deg, rgba(0,0,0,.018) 0 1px, transparent 1px 40px) !important;
+    border-color:rgba(0,0,0,.08) !important;
+    box-shadow:0 1px 0 rgba(255,255,255,.7) inset, 0 18px 34px -18px rgba(0,0,0,.22) !important;
+  }
+  .lt-marble::before{
+    content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;
+    opacity:.4;mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='m'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='matrix' values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.05 0'/></filter><rect width='100%25' height='100%25' filter='url(%23m)'/></svg>");
+    background-size:140px 140px;
+  }
+  .lt-marble:hover{
+    border-color:rgba(0,0,0,.16) !important;
+    box-shadow:0 1px 0 rgba(255,255,255,.8) inset, 0 26px 46px -18px rgba(0,0,0,.28) !important;
+  }
+  .step-check{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:32px;height:32px;border-radius:50%;
+    border:1px solid rgba(0,0,0,.28);color:#141414;flex-shrink:0;
+  }
+  .step-check svg{width:14px;height:14px}
+
+  /* Заголовки-вопросы FAQ — серифный bold без caps (не крик, но весомее) */
+  .faq-q-serif{
+    font-family:"Playfair Display",serif;
+    font-weight:700;
+    font-size:25px;
+    line-height:1.25;
+    letter-spacing:0;
+    color:#111;
+  }
+
+  /* ===== ОБНОВЛЁННЫЙ HERO-PHOTO ===== */
+  .hero-photo{
+    position:absolute;top:0;bottom:0;
+    left:680px;right:300px;width:auto;
+    background:url('photos/photo.png') 50% 22%/cover;
+    filter:grayscale(1) contrast(1.12) brightness(.85);
+    -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 14%,#000 86%,transparent 100%);
+    mask-image:linear-gradient(90deg,transparent 0,#000 14%,#000 86%,transparent 100%);
+    animation:hzoom 9s cubic-bezier(.2,.7,.2,1) both
+  }
+
+  /* ===== ПРЕМИАЛЬНЫЙ СТИЛЬ ТЁМНЫХ КАРТОЧЕК (Pain / Why / Extra / Safe) ===== */
+  .pcard, .gcard{
+    position:relative;
+    background:
+      linear-gradient(155deg, rgba(255,255,255,.035), rgba(255,255,255,0) 40%),
+      linear-gradient(rgba(6,6,6,.62), rgba(0,0,0,.72));
+    border:1px solid rgba(255,255,255,.09);
+    box-shadow:
+      0 1px 0 rgba(255,255,255,.05) inset,
+      0 26px 44px -22px rgba(0,0,0,.65);
+    transition:transform .45s cubic-bezier(.16,1,.3,1), box-shadow .45s ease, border-color .45s ease, background .45s ease;
+  }
+  .pcard:hover, .gcard:hover{
+    transform:translateY(-5px);
+    border-color:rgba(255,255,255,.22);
+    box-shadow:
+      0 1px 0 rgba(255,255,255,.08) inset,
+      0 34px 60px -22px rgba(0,0,0,.72);
+  }
+  .pcard:hover .card-title-light, .gcard:hover .card-title-light{ color:#fbfbfb; }
+  .pcard .card-title-light, .gcard .card-title-light{ transition:color .4s ease; }
+
+  /* Акцентная (главная) карточка в Pain — крупнее и весомее остальных */
+  .pcard.pcard-lead{
+    border-color:rgba(255,255,255,.16);
+    background:
+      linear-gradient(155deg, rgba(255,255,255,.05), rgba(255,255,255,0) 45%),
+      linear-gradient(rgba(10,10,10,.5), rgba(0,0,0,.68));
+  }
+  .pcard.pcard-lead .card-title-light{ font-size:32px; }
+  .pcard.pcard-lead .card-desc-light{ font-size:18px; color:#c2c2c2; }
+
+  /* Masonry (чистый CSS, без библиотек) для карточек Pain-секции */
+  .masonry{column-count:2;column-gap:16px}
+  .masonry .pcard{display:inline-block;width:100%;break-inside:avoid;margin:0 0 16px}
+  @media(max-width:640px){.masonry{column-count:1}}
+
+  /* Лёгкая масштабная неравномерность карточек Skills/Call без ломки грида */
+  .svc-grid, .rev-grid{align-items:start}
+
+  /* Микро-переход фона между соседними тёмными секциями (не трогает светлые) */
+  #pain{--ph-base:#111111}
+  #why{--ph-base:#151515}
+  #extra{--ph-base:#101010}
+  #safe{--ph-base:#161616}
+
+  .hero-side{
+    position:absolute;z-index:3;right:clamp(20px,3vw,40px);top:50%;
+    transform:translateY(-50%);display:flex;flex-direction:column;gap:12px;
+    width:clamp(220px,18vw,260px)
+  }
+
+  @media(max-width:1360px){
+    [data-hide-mobile]{display:none !important}
+    .burger{display:inline-flex !important;align-items:center}
+    .hbrand-txt{display:flex !important}
+    .hero-photo{left:560px;right:250px}
+  }
+  @media(max-width:1150px){
+    .hero-photo{left:460px;right:220px}
+    .hero-side{width:clamp(190px,20vw,230px)}
+  }
+  @media(max-width:1000px){
+    .hero-panel{display:block !important;min-height:auto !important;box-shadow:none !important;background:linear-gradient(180deg,#1c1c1c,#111) !important}
+    .hero-bgblur{display:none !important}
+    .hero-photo{top:0 !important;bottom:auto !important;left:0 !important;right:0 !important;width:100% !important;height:44vh !important;-webkit-mask-image:linear-gradient(180deg,#000 58%,transparent) !important;mask-image:linear-gradient(180deg,#000 58%,transparent) !important;opacity:1 !important}
+    .hero-content{position:relative !important;max-width:100% !important;padding:46vh 24px 34px !important}
+    .hero-cta{min-width:0 !important;width:100% !important;gap:20px !important}
+    .hero-side{display:none !important}
+  }
+  @media(max-width:760px){
+    [data-hide-mobile]{display:none !important}
+    .burger{display:inline-flex !important;align-items:center}
+    .hbrand-txt{display:flex !important}
+    .hero-content{padding:42vh 20px 30px !important}
+    .pain-grid{grid-template-columns:1fr !important;gap:26px !important}
+    .svc-grid,.rev-grid{display:flex !important;grid-template-columns:none !important;flex-wrap:nowrap !important;overflow-x:auto;scroll-snap-type:x mandatory;gap:14px !important;margin-left:-22px !important;margin-right:-22px !important;padding:6px 22px 18px !important;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+    .svc-grid::-webkit-scrollbar,.rev-grid::-webkit-scrollbar{display:none}
+    .svc-grid>.svc,.rev-grid>.svc{flex:0 0 80% !important;scroll-snap-align:center}
+    header{height:56px !important;border-radius:13px !important}
+    .hbadge{width:32px !important;height:32px !important}
+    .hbrand-sub{display:none !important}
+  }
+
+  :root{--ink:#0a0a0a;--paper:#e7e7e7;--muted:#8f8f8f;--rim:rgba(220,220,220,.4);--rim-soft:rgba(220,220,220,.14)}
+  .flink{transition:color .3s}
+  .flink:hover{color:#f2f2f2 !important}
+  .sidecard{transition:border-color .4s,transform .4s,background .4s}
+  .sidecard:hover{border-color:rgba(210,210,210,.35) !important;transform:translateX(-3px);background:rgba(255,255,255,.06) !important}
+  @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto !important;transition:none !important;animation:none !important}.reveal{opacity:1 !important;transform:none !important}.hero-side .sidecard{opacity:1 !important;transform:none !important}}
+</style>
 </head>
 <body>
 
-  <!-- ===== ФОН ===== -->
-  <div class="bg-layer">
-    <div class="bg-dark"></div>
-    <div class="bg-photo"></div>
-    <div class="bg-overlay"></div>
+<!-- ===== ПРЕЛОАДЕР ===== -->
+<div id="loader">
+  <div class="preloader-word" id="preloaderWord"></div>
+</div>
+
+<!-- ===== ОСНОВНОЙ КОНТЕНТ ===== -->
+<div style="position:relative;min-height:100vh;overflow-x:clip;background:#d9d9d9;color:#141414;font-family:'PP Neue Montreal',sans-serif">
+
+  <div style="position:absolute;top:0;left:0;right:0;height:100vh;z-index:0;overflow:hidden">
+    <div style="position:absolute;inset:0;background:radial-gradient(130% 92% at 50% -12%,#eaeaea 0%,#dcdcdc 48%,#cfcfcf 100%)"></div>
   </div>
 
-  <div class="container">
-    <!-- Логотип -->
-    <a href="/" class="logo" aria-label="iSAYFULLAH">
-      <span class="logo-badge">
-        <span>iS</span>
+  <!-- ===== НАВИГАЦИЯ ===== -->
+  <header style="position:sticky;top:clamp(14px,1.9vh,22px);z-index:30;margin:clamp(14px,1.9vh,22px) clamp(16px,3vw,44px) 0;height:76px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;border:1px solid rgba(255,255,255,.7);border-radius:16px;box-shadow:rgba(255,255,255,.85) 0 1px 0 inset, rgba(10,10,10,.16) 0 16px 40px;backdrop-filter:blur(8px);background:linear-gradient(rgba(238,238,238,.82),rgba(226,226,226,.76))">
+    <a href="#top" aria-label="iSAYFULLAH — на главную" style="position:relative;z-index:2;display:flex;align-items:center;gap:13px;text-decoration:none">
+      <span class="hbadge" style="display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:10px;background:linear-gradient(150deg,#232323,#050505);box-shadow:inset 0 1px 0 rgba(255,255,255,.07),0 4px 12px rgba(0,0,0,.3)">
+        <span style="font:500 15px 'PP Neue Montreal',sans-serif;color:#e7e7e7">iS</span>
       </span>
-      <span class="logo-text">
-        <span class="brand">iSAYFULLAH</span>
-        <span class="sub">Скоро запуск</span>
+      <span class="hbrand-txt" style="display:flex;flex-direction:column;line-height:1.05">
+        <span style="font:500 13px 'PP Neue Montreal',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:#151515">iSAYFULLAH</span>
+        <span class="hbrand-sub" style="margin-top:3px;font:400 12px 'PP Neue Montreal',sans-serif;letter-spacing:0;color:#787878;white-space:nowrap">Прокачка бизнеса</span>
       </span>
     </a>
+    <nav aria-label="Основная навигация" style="position:relative;z-index:2;display:flex;align-items:center;gap:clamp(18px,2.2vw,38px)" data-hide-mobile="1">
+      <a class="nav-link" href="#top">Главная</a>
+      <a class="nav-link" href="#why">Подход</a>
+      <a class="nav-link" href="#skills">Что меняется</a>
+      <a class="nav-link" href="#extra">Дополнительно</a>
+      <a class="nav-link" href="#safe">Уверенность</a>
+      <a class="nav-link" href="#faq">Вопросы</a>
+      <a class="nav-link" href="#contacts">Контакты</a>
+      <a class="nav-link" href="partnerka.html">Партнёрам ↗</a>
+    </nav>
+    <a class="tgbtn" href="https://t.me/iamSayfullah" target="_blank" rel="noopener" style="position:relative;z-index:2;display:inline-flex;align-items:center;gap:11px;font:500 13px 'PP Neue Montreal',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#151515;background:linear-gradient(135deg,#eceae4,#c9c7c0 48%,#f3f2ee 62%,#cecdc4);border:1px solid rgba(255,255,255,.6);padding:13px 22px;border-radius:11px;text-decoration:none;box-shadow:rgba(10,10,10,.16) 0 2px 8px" data-hide-mobile="1">
+      Telegram
+      <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17 17 7M9 7h8v8"></path></svg>
+    </a>
+    <button data-menu-open="" aria-label="Открыть меню" aria-controls="mobile-menu" aria-expanded="false" class="burger" style="position:relative;z-index:2;display:none;background:none;border:0;cursor:pointer;padding:8px;color:#151515;font:500 13px 'PP Neue Montreal',sans-serif">
+      <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 6h18M3 12h18M3 18h18"></path></svg>
+    </button>
+  </header>
 
-    <!-- Иконка -->
-    <div class="status-icon">
-      <svg viewBox="0 0 24 24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M12 3L4 6v6c0 4 3.4 6.8 8 9 4.6-2.2 8-5 8-9V6l-8-3z" />
-        <path d="M9 12l2 2 4-4" />
-      </svg>
+  <!-- ============================================================ -->
+  <!-- HERO                                                         -->
+  <!-- ============================================================ -->
+  <a id="top"></a>
+  <section style="position:relative;z-index:20;display:flex;flex-direction:column;min-height:calc(100vh - 92px);padding:clamp(14px,2vh,24px) clamp(16px,3vw,44px) clamp(20px,3vh,34px)">
+    <div class="hero-panel" style="position:relative;flex:1;min-height:0;display:flex;align-items:center;border-radius:22px;overflow:hidden;border:1px solid rgba(255,255,255,.6);box-shadow:0 1px 0 rgba(255,255,255,.7) inset, 0 26px 60px rgba(10,10,10,.2);background:#0a0a0a">
+      <div class="hero-bgblur" style="position:absolute;inset:-70px;background:url('photos/photo.png') 50% 30%/cover;filter:blur(46px) grayscale(1) brightness(.55)"></div>
+      <div style="position:absolute;inset:0;background:linear-gradient(110deg,rgba(10,10,10,.62),rgba(8,8,8,.58))"></div>
+      <div class="hero-photo" role="img" aria-label="iSAYFULLAH"></div>
+
+      <!-- Правая колонка с карточками (обновлены иконки) -->
+      <div class="hero-side" id="heroSide">
+        <div class="sidecard">
+          <span class="icon-wrap">
+            <svg viewBox="0 0 24 24" stroke="currentColor"><path d="M3 17v3a2 2 0 002 2h14a2 2 0 002-2v-3"/><polyline points="7 11 12 6 17 11"/><line x1="12" y1="6" x2="12" y2="18"/></svg>
+          </span>
+          <div>
+            <div class="side-title">Прокачка клиентуры</div>
+            <div class="side-desc">о бизнесе узнает больше людей</div>
+          </div>
+        </div>
+        <div class="sidecard">
+          <span class="icon-wrap">
+            <svg viewBox="0 0 24 24" stroke="currentColor"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+          </span>
+          <div>
+            <div class="side-title">Автоматизация</div>
+            <div class="side-desc">меньше рутины, больше времени</div>
+          </div>
+        </div>
+        <div class="sidecard">
+          <span class="icon-wrap">
+            <svg viewBox="0 0 24 24" stroke="currentColor"><path d="M12 3L2 9l10 6 10-6-10-6z"/><path d="M2 15l10 6 10-6"/><path d="M2 9l10 6 10-6"/></svg>
+          </span>
+          <div>
+            <div class="side-title">ИИ для бизнеса</div>
+            <div class="side-desc">отвечает клиентам в любое время</div>
+          </div>
+        </div>
+        <div class="sidecard">
+          <span class="icon-wrap">
+            <svg viewBox="0 0 24 24" stroke="currentColor"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+          </span>
+          <div>
+            <div class="side-title">Дополнительные возможности</div>
+            <div class="side-desc">то, чего нет у большинства</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-content" style="position:relative;z-index:2;max-width:640px;padding:clamp(34px,5vw,72px)">
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:24px">
+          <span class="section-number" style="color:#9a9a9a;">01</span>
+          <span style="display:block;width:40px;height:1px;background:linear-gradient(90deg,#5a5a5a,transparent)"></span>
+          <span style="font:500 13px 'PP Neue Montreal',sans-serif;color:#9a9a9a;letter-spacing:0;">Бизнес становится сильнее</span>
+        </div>
+        <h1 class="hero-title">
+          <span class="hero-light">Клиентов может быть</span>
+          <span class="hero-accent">больше.</span>
+        </h1>
+        <div class="body-text" style="margin-top:32px;color:#b4b4b4;">
+          <p style="margin-bottom:12px;">Большинство предпринимателей теряют возможности для роста не потому, что у них плохой продукт. А потому что сайт, продвижение и внутренние процессы не работают так, как должны.</p>
+          <p>Я работаю один — от сайта и рекламы до автоматизации. Бизнесу не нужно собирать команду из разных подрядчиков и объяснять задачу заново каждому.</p>
+        </div>
+
+        <a class="hero-cta btn" href="https://t.me/iamSayfullah" target="_blank" rel="noopener" style="margin-top:48px;display:inline-flex;align-items:center;justify-content:space-between;gap:54px;min-width:320px;padding:20px 28px;border-radius:12px;border:1px solid rgba(0,0,0,.14);background:linear-gradient(#f5f5f5,#e3e3e3);color:#141414;text-decoration:none;box-shadow:0 16px 34px rgba(10,10,10,.2)">
+          Обсудить задачу
+          <svg class="ctaArr" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.4" style="transition:transform .4s cubic-bezier(.2,.7,.2,1)"><path d="M7 17 17 7M9 7h8v8"></path></svg>
+        </a>
+        <div style="margin-top:24px;display:flex;flex-wrap:wrap;gap:12px 20px;">
+          <span style="font:400 13px 'PP Neue Montreal',sans-serif;color:#9a9a9a;letter-spacing:0;">Бизнес становится сильнее. Я отвечаю за результат.</span>
+        </div>
+      </div>
     </div>
-
-    <!-- Заголовок -->
-    <h1>Сайт<br><span>на разработке</span></h1>
-
-    <!-- Сообщение -->
-    <p class="message">Завтра тут будет контент)</p>
-    <p class="sub-message">Мы строим систему. Скоро всё заработает.</p>
-
-    <!-- Три точки -->
-    <div class="dots-wrap">
-      <span class="dot"></span>
-      <span class="dot"></span>
-      <span class="dot"></span>
+    <div style="margin-top:clamp(14px,2vh,22px);display:flex;align-items:flex-end;justify-content:flex-end;gap:30px">
+      <div style="display:flex;align-items:center;gap:10px;color:#7c7c7c">
+        <span style="font:400 13px 'PP Neue Montreal',sans-serif;letter-spacing:0;">Листай</span>
+        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.4" style="animation:bob 2.2s ease-in-out infinite"><path d="M12 5v14M6 13l6 6 6-6"></path></svg>
+      </div>
     </div>
+  </section>
 
-    <!-- Действия -->
-    <div class="actions">
-      <a href="https://t.me/iamSayfullah" target="_blank" rel="noopener" class="action-link">
-        <span>Telegram</span>
-        <svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg>
-      </a>
-      <a href="partnerka.html" class="action-link partner">
-        <span>Партнёрам</span>
-        <svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg>
-      </a>
+  <!-- ============================================================ -->
+  <!-- БЛОК 02 – ПРОБЛЕМЫ                                           -->
+  <!-- ============================================================ -->
+  <section id="pain" style="position:relative;z-index:5;background:linear-gradient(rgba(24,24,24,.5),rgba(10,10,10,.7)),url('photos/note.png') center/cover;padding:clamp(88px,13vh,158px) clamp(22px,4vw,72px);overflow:hidden">
+    <div style="position:relative;max-width:1280px;margin:0 auto;display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);gap:clamp(36px,5vw,84px);align-items:start" class="pain-grid reveal">
+      <div>
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:24px">
+          <span class="section-number" style="color:#9a9a9a;">02</span>
+          <span style="display:block;width:38px;height:1px;background:rgba(210,210,210,.28)"></span>
+          <span style="font:500 13px 'PP Neue Montreal',sans-serif;color:#c8c8c8;letter-spacing:0;">Знакомая ситуация</span>
+        </div>
+        <h2 class="section-title-light" style="font-size:clamp(40px,5vw,76px);margin-top:0;">Рост есть.<br>Но могло быть больше.</h2>
+        <div style="margin-top:32px;display:flex;align-items:center;gap:16px">
+          <span style="display:block;width:46px;height:2px;background:linear-gradient(90deg,#cacaca,transparent)"></span>
+          <span style="font:400 16px 'PP Neue Montreal',sans-serif;color:#dedede;letter-spacing:0;">Проблемы, которые незаметно мешают бизнесу расти каждый день.</span>
+        </div>
+      </div>
+      <div class="masonry">
+        <div class="pcard pcard-lead" style="display:flex;align-items:flex-start;gap:20px;padding:34px 28px;border-radius:16px">
+          <div><div class="card-title-light" style="margin-bottom:18px;">Клиентов меньше, чем могли бы быть</div><div class="card-desc-light">О вас узнают не все, кому действительно интересны ваши товары или услуги. Это то, что чаще всего тормозит рост, даже когда продукт хороший.</div></div>
+        </div>
+        <div class="pcard" style="display:flex;align-items:flex-start;gap:20px;padding:26px 22px;border-radius:14px">
+          <div><div class="card-title-light" style="font-size:24px;margin-bottom:14px;">Реклама работает, но не приносит максимум</div><div class="card-desc-light" style="font-size:16px;">Деньги тратятся, но результат не дотягивает до того, что реклама могла бы дать.</div></div>
+        </div>
+        <div class="pcard" style="display:flex;align-items:flex-start;gap:20px;padding:30px 24px;border-radius:14px">
+          <div><div class="card-title-light" style="font-size:25px;margin-bottom:16px;">Заявки теряются</div><div class="card-desc-light" style="font-size:16px;">Форма не работает, письмо не дошло, сообщение осталось без ответа — клиент уходит.</div></div>
+        </div>
+        <div class="pcard" style="display:flex;align-items:flex-start;gap:20px;padding:24px 22px;border-radius:14px">
+          <div><div class="card-title-light" style="font-size:24px;margin-bottom:14px;">Рутина забирает время</div><div class="card-desc-light" style="font-size:16px;">Повторяющиеся задачи отвлекают от развития бизнеса.</div></div>
+        </div>
+        <div class="pcard" style="display:flex;align-items:flex-start;gap:20px;padding:28px 24px;border-radius:14px">
+          <div><div class="card-title-light" style="font-size:25px;margin-bottom:16px;">Конкуренты выглядят сильнее</div><div class="card-desc-light" style="font-size:16px;">Даже если ваш продукт лучше, в интернете это не всегда видно.</div></div>
+        </div>
+      </div>
     </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- БЛОК 03 – РЕЗУЛЬТАТЫ                                        -->
+  <!-- ============================================================ -->
+  <section id="order" style="position:relative;z-index:5;background:linear-gradient(#dcdcdc,#cfcfcf);padding:clamp(88px,13vh,158px) clamp(22px,4vw,72px);overflow:hidden">
+    <div style="position:relative;max-width:1280px;margin:0 auto;display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);gap:clamp(36px,5vw,84px);align-items:start" class="pain-grid reveal">
+      <div>
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:24px">
+          <span class="section-number" style="color:#454545;">03</span>
+          <span style="display:block;width:38px;height:1px;background:rgba(0,0,0,.25)"></span>
+          <span style="font:500 13px 'PP Neue Montreal',sans-serif;color:#666;letter-spacing:0;">Бизнес становится сильнее</span>
+        </div>
+        <h2 class="section-title" style="font-size:clamp(40px,5vw,76px);margin-top:0;">Вот что меняется<br>для бизнеса</h2>
+        <div style="margin-top:32px;display:flex;align-items:center;gap:16px">
+          <span style="display:block;width:46px;height:2px;background:linear-gradient(90deg,#111,transparent)"></span>
+          <span style="font:400 16px 'PP Neue Montreal',sans-serif;color:#252525;letter-spacing:0;">Каждое решение приносит пользу бизнесу.</span>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:4px">
+        <div class="orow" style="display:flex;align-items:flex-start;gap:18px;padding:28px 20px;border-top:1px solid rgba(0,0,0,.13);border-radius:10px">
+          <span class="ock" style="flex:0 0 auto;margin-top:2px;display:grid;place-items:center;width:34px;height:34px;border:1px solid rgba(0,0,0,.28);border-radius:50%;color:#111;transition:border-color .35s,background .35s,color .35s"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 13l4 4L19 7"></path></svg></span>
+          <div><div class="card-title title-serif" style="font-size:26px;margin-bottom:18px;">Больше потенциальных клиентов</div><div class="card-desc" style="font-size:17px;">О вашем бизнесе узнаёт больше людей, которым действительно интересно ваше предложение.</div></div>
+        </div>
+        <div class="orow" style="display:flex;align-items:flex-start;gap:18px;padding:28px 20px;border-top:1px solid rgba(0,0,0,.13);border-radius:10px">
+          <span class="ock" style="flex:0 0 auto;margin-top:2px;display:grid;place-items:center;width:34px;height:34px;border:1px solid rgba(0,0,0,.28);border-radius:50%;color:#111;transition:border-color .35s,background .35s,color .35s"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 13l4 4L19 7"></path></svg></span>
+          <div><div class="card-title title-serif" style="font-size:26px;margin-bottom:18px;">Клиенту проще купить</div><div class="card-desc" style="font-size:17px;">Сайт, приложение или Telegram помогают быстро разобраться и оставить заявку.</div></div>
+        </div>
+        <div class="orow" style="display:flex;align-items:flex-start;gap:18px;padding:28px 20px;border-top:1px solid rgba(0,0,0,.13);border-radius:10px">
+          <span class="ock" style="flex:0 0 auto;margin-top:2px;display:grid;place-items:center;width:34px;height:34px;border:1px solid rgba(0,0,0,.28);border-radius:50%;color:#111;transition:border-color .35s,background .35s,color .35s"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 13l4 4L19 7"></path></svg></span>
+          <div><div class="card-title title-serif" style="font-size:26px;margin-bottom:18px;">Меньше ручной работы</div><div class="card-desc" style="font-size:17px;">Настроил один раз — и повторяющиеся действия больше не требуют твоего внимания.</div></div>
+        </div>
+        <div class="orow" style="display:flex;align-items:flex-start;gap:18px;padding:28px 20px;border-top:1px solid rgba(0,0,0,.13);border-radius:10px">
+          <span class="ock" style="flex:0 0 auto;margin-top:2px;display:grid;place-items:center;width:34px;height:34px;border:1px solid rgba(0,0,0,.28);border-radius:50%;color:#111;transition:border-color .35s,background .35s,color .35s"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 13l4 4L19 7"></path></svg></span>
+          <div><div class="card-title title-serif" style="font-size:26px;margin-bottom:18px;">Современный образ бизнеса</div><div class="card-desc" style="font-size:17px;">Оформление сайта — это первое, что видит клиент, ещё до разговора с тобой. Аккуратный, продуманный сайт работает как визитная карточка компании и вызывает доверие раньше, чем ты успеешь что-то сказать.</div></div>
+        </div>
+        <div class="orow" style="display:flex;align-items:flex-start;gap:18px;padding:28px 20px;border-top:1px solid rgba(0,0,0,.13);border-bottom:1px solid rgba(0,0,0,.13);border-radius:10px">
+          <span class="ock" style="flex:0 0 auto;margin-top:2px;display:grid;place-items:center;width:34px;height:34px;border:1px solid rgba(0,0,0,.28);border-radius:50%;color:#111;transition:border-color .35s,background .35s,color .35s"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 13l4 4L19 7"></path></svg></span>
+          <div><div class="card-title title-serif" style="font-size:26px;margin-bottom:18px;">Всё работает вместе</div><div class="card-desc" style="font-size:17px;">Продвижение, сайт и внутренние процессы дополняют друг друга и усиливают общий результат.</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- БЛОК 04 – ПОДХОД                                            -->
+  <!-- ============================================================ -->
+  <section id="why" style="position:relative;z-index:5;background:linear-gradient(rgba(20,20,20,.55),rgba(8,8,8,.76)),url('photos/oginokiy.png') center/cover;padding:clamp(88px,13vh,158px) clamp(22px,4vw,72px);overflow:hidden">
+    <div style="position:relative;max-width:1280px;margin:0 auto" class="reveal">
+      <div style="display:grid;grid-template-columns:minmax(0,1.02fr) minmax(0,1.08fr);gap:clamp(38px,4.6vw,76px);align-items:center" class="duo-grid">
+        <div style="position:relative;border:1px solid rgba(210,210,210,.18);border-radius:18px;overflow:hidden;box-shadow:0 30px 70px rgba(0,0,0,.5)">
+          <!-- Заглушка под личное фото заменена на реальное -->
+          <div role="img" aria-label="iSAYFULLAH" style="aspect-ratio:4/5;background-image:url('photos/odinok2.png');background-size:cover;background-position:50% 24%;filter:grayscale(1) contrast(1.1) brightness(.98)"></div>
+          <div style="position:absolute;inset:0;background:linear-gradient(0deg,rgba(8,8,8,.62),transparent 44%)"></div>
+          <div style="position:absolute;left:0;right:0;bottom:0;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:20px 22px">
+            <span style="font:400 13px 'PP Neue Montreal',sans-serif;color:#dedede;letter-spacing:0;">iSAYFULLAH</span>
+            <span style="display:block;flex:1;height:1px;background:rgba(210,210,210,.24)"></span>
+            <span style="font:400 13px 'PP Neue Montreal',sans-serif;color:#dedede;letter-spacing:0;">Прокачка бизнеса</span>
+          </div>
+        </div>
+        <div>
+          <div style="display:flex;align-items:center;gap:14px;margin-bottom:24px">
+            <span class="section-number" style="color:#9a9a9a;">04</span>
+            <span style="display:block;width:38px;height:1px;background:rgba(210,210,210,.28)"></span>
+            <span style="font:500 13px 'PP Neue Montreal',sans-serif;color:#c8c8c8;letter-spacing:0;">Как я помогаю</span>
+          </div>
+          <h2 class="section-title-light" style="font-size:clamp(40px,5vw,76px);margin-top:0;">Сначала бизнес.<br>Потом технологии.</h2>
+          <div style="margin-top:40px;display:flex;flex-direction:column;gap:16px">
+            <div class="pcard" style="display:flex;align-items:flex-start;gap:18px;padding:24px 22px;border-radius:14px">
+              <div class="card-desc-light" style="font-size:17px;">
+                <span style="font-weight:700;">Не начинаю работу с выбора инструментов.</span> Сначала разбираюсь, где бизнес теряет клиентов, время или деньги. Только после этого предлагаю решение. Иногда нужен новый сайт. Иногда — реклама. Иногда достаточно автоматизировать один процесс. Каждый инструмент должен приносить пользу бизнесу, а не просто существовать.
+              </div>
+            </div>
+            <div class="pcard" style="display:flex;align-items:flex-start;gap:18px;padding:24px 22px;border-radius:14px">
+              <div class="card-desc-light" style="font-size:17px;">
+                <span style="font-weight:700;">Всё, что внедряю, должно работать стабильно.</span> Без красивых обещаний. Без постоянных доработок. Без зависимости от десяти разных специалистов.
+              </div>
+            </div>
+            <div class="pcard" style="display:flex;align-items:flex-start;gap:18px;padding:24px 22px;border-radius:14px;border-color:rgba(200,180,150,.35)">
+              <div class="card-desc-light" style="font-size:17px;">
+                <span style="font-weight:700;">Дополнительная возможность для бизнеса.</span><br>
+                При необходимости могу организовать размещение рекламы в крупных региональных Telegram-каналах, включая государственные каналы. Это помогает получать дополнительный охват и знакомить с бизнесом новую аудиторию. Возможность доступна для компаний из любых регионов России и СНГ.
+              </div>
+            </div>
+            <div style="margin-top:8px;font:300 14px 'PP Neue Montreal',sans-serif;color:#9a9a9a;letter-spacing:0;border-top:1px solid rgba(210,210,210,.15);padding-top:20px;">
+              Кстати — сайт, на котором ты сейчас находишься, тоже моя работа, от кода до текста. Так будет выглядеть и твой продукт: то, что я делаю для клиентов, я в первую очередь делаю для себя.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- БЛОК 05 – ЧТО ПОЛУЧАЕТ БИЗНЕС                               -->
+  <!-- ============================================================ -->
+  <section id="skills" style="position:relative;z-index:5;background:linear-gradient(#dcdcdc,#cfcfcf);padding:clamp(88px,13vh,158px) clamp(22px,4vw,72px);overflow:hidden">
+    <div style="position:relative;max-width:1280px;margin:0 auto" class="reveal">
+      <div style="max-width:760px;margin-bottom:56px;">
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:24px">
+          <span class="section-number" style="color:#666;">05</span>
+          <span style="display:block;width:38px;height:1px;background:rgba(0,0,0,.25)"></span>
+          <span style="font:500 13px 'PP Neue Montreal',sans-serif;color:#666;letter-spacing:0;">Что получает бизнес</span>
+        </div>
+        <h2 class="section-title" style="font-size:clamp(40px,5vw,76px);margin-top:0;">Конкретные<br>изменения</h2>
+        <div class="body-text" style="margin-top:24px;color:#4c4c4c;">Нужен один инструмент или вся цепочка сразу — каждое решение здесь работает на конкретную задачу бизнеса, а не существует само по себе.</div>
+      </div>
+
+      <div class="grp-block" style="margin-top:clamp(40px,5vw,64px)">
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:24px;">
+          <span class="grp-badge">A</span>
+          <span class="grp-title">Больше клиентов и узнаваемость</span>
+          <span class="grp-divider"></span>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,1.4vw,18px)" class="svc-grid">
+          <div class="svc" style="position:relative;display:flex;flex-direction:column;gap:12px;padding:32px 28px 34px;border-radius:14px;overflow:hidden">
+            <span class="svcbar" style="position:absolute;top:0;left:0;height:2px;background:linear-gradient(90deg,#111,transparent)"></span>
+            <div class="card-title title-serif" style="font-size:25px;">Прокачка клиентуры</div>
+            <div class="card-desc" style="font-size:17px;">О вашем бизнесе узнаёт больше потенциальных клиентов. Подбираю способы продвижения под задачу бизнеса, а не наоборот.</div>
+          </div>
+          <div class="svc" style="position:relative;display:flex;flex-direction:column;gap:12px;padding:32px 28px 34px;border-radius:14px;overflow:hidden">
+            <span class="svcbar" style="position:absolute;top:0;left:0;height:2px;background:linear-gradient(90deg,#111,transparent)"></span>
+            <div class="card-title title-serif" style="font-size:25px;">Бизнес растёт системно</div>
+            <div class="card-desc" style="font-size:17px;">Не отдельная реклама или новый сайт. Все изменения работают на одну цель — развитие бизнеса.</div>
+          </div>
+          <div class="svc" style="position:relative;display:flex;flex-direction:column;gap:12px;padding:32px 28px 34px;border-radius:14px;overflow:hidden">
+            <span class="svcbar" style="position:absolute;top:0;left:0;height:2px;background:linear-gradient(90deg,#111,transparent)"></span>
+            <div class="card-title title-serif" style="font-size:25px;">Чтобы бизнес запоминали</div>
+            <div class="card-desc" style="font-size:17px;">Профессиональный фирменный стиль помогает выглядеть серьёзнее, вызывать доверие и выделяться среди конкурентов.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grp-block">
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:24px;">
+          <span class="grp-badge">B</span>
+          <span class="grp-title">Удобство для клиентов и владельцев</span>
+          <span class="grp-divider"></span>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,1.4vw,18px)" class="svc-grid">
+          <div class="svc" style="position:relative;display:flex;flex-direction:column;gap:12px;padding:32px 28px 34px;border-radius:14px;overflow:hidden">
+            <span class="svcbar" style="position:absolute;top:0;left:0;height:2px;background:linear-gradient(90deg,#111,transparent)"></span>
+            <div class="card-title title-serif" style="font-size:25px;">Клиенту проще обратиться</div>
+            <div class="card-desc" style="font-size:17px;">Лендинг, каталог или полноценный сайт помогают быстро понять предложение и оставить заявку без лишних действий.</div>
+          </div>
+          <div class="svc" style="position:relative;display:flex;flex-direction:column;gap:12px;padding:32px 28px 34px;border-radius:14px;overflow:hidden">
+            <span class="svcbar" style="position:absolute;top:0;left:0;height:2px;background:linear-gradient(90deg,#111,transparent)"></span>
+            <div class="card-title title-serif" style="font-size:25px;">Бизнес внутри Telegram</div>
+            <div class="card-desc" style="font-size:17px;">Mini App позволяет продавать товары или услуги прямо внутри Telegram без переходов на сторонние сайты.</div>
+          </div>
+          <div class="svc" style="position:relative;display:flex;flex-direction:column;gap:12px;padding:32px 28px 34px;border-radius:14px;overflow:hidden">
+            <span class="svcbar" style="position:absolute;top:0;left:0;height:2px;background:linear-gradient(90deg,#111,transparent)"></span>
+            <div class="card-title title-serif" style="font-size:25px;">Приложения для сложных задач</div>
+            <div class="card-desc" style="font-size:17px;">Когда бизнесу уже недостаточно сайта — создаю веб- и мобильные приложения под конкретные задачи.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grp-block">
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:24px;">
+          <span class="grp-badge">C</span>
+          <span class="grp-title">Автоматизация и экономия времени</span>
+          <span class="grp-divider"></span>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,1.4vw,18px)" class="svc-grid">
+          <div class="svc" style="position:relative;display:flex;flex-direction:column;gap:12px;padding:32px 28px 34px;border-radius:14px;overflow:hidden">
+            <span class="svcbar" style="position:absolute;top:0;left:0;height:2px;background:linear-gradient(90deg,#111,transparent)"></span>
+            <div class="card-title title-serif" style="font-size:25px;">Клиенты получают ответ сразу</div>
+            <div class="card-desc" style="font-size:17px;">Чат-бот отвечает на частые вопросы, принимает заявки и помогает клиенту даже тогда, когда вы заняты.</div>
+          </div>
+          <div class="svc" style="position:relative;display:flex;flex-direction:column;gap:12px;padding:32px 28px 34px;border-radius:14px;overflow:hidden">
+            <span class="svcbar" style="position:absolute;top:0;left:0;height:2px;background:linear-gradient(90deg,#111,transparent)"></span>
+            <div class="card-title title-serif" style="font-size:25px;">ИИ — сотрудник 24/7</div>
+            <div class="card-desc" style="font-size:17px;">ИИ консультирует клиентов, собирает контакты и помогает не терять обращения даже ночью или в выходные.</div>
+          </div>
+          <div class="svc" style="position:relative;display:flex;flex-direction:column;gap:12px;padding:32px 28px 34px;border-radius:14px;overflow:hidden">
+            <span class="svcbar" style="position:absolute;top:0;left:0;height:2px;background:linear-gradient(90deg,#111,transparent)"></span>
+            <div class="card-title title-serif" style="font-size:25px;">Заявки не теряются</div>
+            <div class="card-desc" style="font-size:17px;">Каждое обращение фиксируется автоматически и попадает туда, где ты его точно увидишь. Повторяющиеся действия берёт на себя система — время освобождается для развития бизнеса, а не для рутины.</div>
+          </div>
+          <a class="svc svc-cta" href="https://t.me/iamSayfullah" target="_blank" rel="noopener" style="position:relative;display:flex;flex-direction:column;justify-content:space-between;gap:18px;padding:32px 28px 34px;background:linear-gradient(#161616,#0a0a0a) !important;border:1px solid rgba(255,255,255,.16) !important;box-shadow:none !important;border-radius:14px;overflow:hidden;text-decoration:none">
+            <div><span style="font:400 14px 'PP Neue Montreal',sans-serif;color:#8a8a8a;letter-spacing:0;">Не нашли свой вариант?</span>
+            <div class="card-title-light title-serif" style="font-size:25px;margin-top:8px;color:#f0f0f0;">Соберём решение под задачу</div></div>
+            <span style="display:inline-flex;align-items:center;gap:10px;font:500 14px 'PP Neue Montreal',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#d6d6d6">Обсудить<svg class="ctaArr2" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.4" style="transition:transform .4s cubic-bezier(.2,.7,.2,1)"><path d="M7 17 17 7M9 7h8v8"></path></svg></span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- БЛОК 06 – ДОПОЛНИТЕЛЬНЫЕ ВОЗМОЖНОСТИ                        -->
+  <!-- ============================================================ -->
+  <section id="extra" style="position:relative;z-index:5;background:linear-gradient(rgba(12,12,12,.6),rgba(6,6,6,.78)),url('photos/kvartira.png') center/cover;padding:clamp(88px,13vh,158px) clamp(22px,4vw,72px);overflow:hidden">
+    <div style="position:relative;max-width:1280px;margin:0 auto" class="reveal">
+      <div style="max-width:760px;">
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:24px">
+          <span class="section-number" style="color:#9a9a9a;">06</span>
+          <span style="display:block;width:38px;height:1px;background:rgba(210,210,210,.28)"></span>
+          <span style="font:500 13px 'PP Neue Montreal',sans-serif;color:#c8c8c8;letter-spacing:0;">Дополнительные возможности</span>
+        </div>
+        <h2 class="section-title-light" style="font-size:clamp(40px,5vw,76px);margin-top:0;">Доступ к тому,<br>чего нет у других</h2>
+        <div class="body-text" style="margin-top:24px;color:#a8a8a8;">
+          <p style="margin-bottom:12px;">Помимо привычных способов продвижения могу организовать размещение рекламы в крупных региональных Telegram-каналах, включая государственные.</p>
+          <p>Это помогает быстро познакомить новую аудиторию с вашим бизнесом — там, где обычная реклама уже не достаёт. Работаю с компаниями из любых регионов России и СНГ.</p>
+        </div>
+        <div style="margin-top:32px;display:flex;gap:14px;flex-wrap:wrap">
+          <span style="font:400 13px 'PP Neue Montreal',sans-serif;color:#c8c8c8;border:1px solid rgba(210,210,210,.2);border-radius:9px;padding:10px 18px;letter-spacing:0;">Россия</span>
+          <span style="font:400 13px 'PP Neue Montreal',sans-serif;color:#c8c8c8;border:1px solid rgba(210,210,210,.2);border-radius:9px;padding:10px 18px;letter-spacing:0;">СНГ</span>
+          <span style="font:400 13px 'PP Neue Montreal',sans-serif;color:#c8c8c8;border:1px solid rgba(210,210,210,.2);border-radius:9px;padding:10px 18px;letter-spacing:0;">Выход на аудиторию регионов</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- БЛОК 07 – ГАРАНТИЯ                                           -->
+  <!-- ============================================================ -->
+  <section id="safe" style="position:relative;z-index:5;background:linear-gradient(rgba(12,12,12,.66),rgba(6,6,6,.84)),url('photos/telephon.png') center/cover;padding:clamp(88px,13vh,158px) clamp(22px,4vw,72px);overflow:hidden">
+    <svg viewBox="0 0 120 90" style="position:absolute;top:clamp(24px,4vh,48px);right:clamp(24px,4vw,64px);width:clamp(90px,10vw,140px);height:auto;opacity:.05;pointer-events:none;z-index:1" fill="none" stroke="#e7e7e7" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M60 20c-14 0-24 11-24 25 0 10 5 17 11 22-2 4-6 6-10 7 6 3 13 2 17-2 2 2 4 3 6 3s4-1 6-3c4 4 11 5 17 2-4-1-8-3-10-7 6-5 11-12 11-22 0-14-10-25-24-25z"></path>
+      <path d="M38 30c-6-4-10-10-9-17 6 1 11 5 13 11M82 30c6-4 10-10 9-17-6 1-11 5-13 11"></path>
+      <path d="M52 46c1-2 3-2 4 0M64 46c1-2 3-2 4 0"></path>
+    </svg>
+    <div style="position:relative;max-width:1280px;margin:0 auto;display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);gap:clamp(36px,5vw,84px);align-items:start" class="pain-grid reveal">
+      <div>
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:24px">
+          <span class="section-number" style="color:#9a9a9a;">07</span>
+          <span style="display:block;width:38px;height:1px;background:rgba(210,210,210,.28)"></span>
+          <span style="font:500 13px 'PP Neue Montreal',sans-serif;color:#c8c8c8;letter-spacing:0;">Мой риск</span>
+        </div>
+        <h2 class="section-title-light" style="font-size:clamp(40px,5vw,76px);margin-top:0;">Не уложился в срок?<br>Проект остаётся у тебя в подарок.</h2>
+        <div style="margin-top:32px;display:flex;align-items:center;gap:16px">
+          <span style="display:block;width:46px;height:2px;background:linear-gradient(90deg,#cacaca,transparent)"></span>
+          <span style="font:400 16px 'PP Neue Montreal',sans-serif;color:#dedede;letter-spacing:0;">Срок согласовываем заранее. Если я нарушаю дедлайн — полностью готовый проект остаётся у тебя бесплатно. Это мой риск. Не твой.</span>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <div class="gcard" style="display:flex;align-items:flex-start;gap:18px;padding:28px 26px;border-radius:14px">
+          <span class="gck" style="flex:0 0 auto;margin-top:2px;display:grid;place-items:center;width:38px;height:38px;border:1px solid rgba(210,210,210,.3);border-radius:50%;color:#d6d6d6;transition:border-color .4s,background .4s,color .4s"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3 4 6v6c0 4 3.4 6.8 8 9 4.6-2.2 8-5 8-9V6l-8-3z"></path><path d="M9 12l2 2 4-4"></path></svg></span>
+          <div><div class="card-title-light" style="font-size:26px;margin-bottom:18px;">Что именно ты получаешь при просрочке</div><div class="card-desc-light" style="font-size:17px;">Не извинения и не скидка — а сам проект: всё, что успел сделать к моменту, когда сорвал срок, — файлы и доступы у тебя. Забираешь и работаешь дальше сам, или с другим исполнителем.</div></div>
+        </div>
+        <div class="gcard" style="display:flex;align-items:flex-start;gap:18px;padding:28px 26px;border-radius:14px">
+          <span class="gck" style="flex:0 0 auto;margin-top:2px;display:grid;place-items:center;width:38px;height:38px;border:1px solid rgba(210,210,210,.3);border-radius:50%;color:#d6d6d6;transition:border-color .4s,background .4s,color .4s"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3 4 6v6c0 4 3.4 6.8 8 9 4.6-2.2 8-5 8-9V6l-8-3z"></path><path d="M9 12l2 2 4-4"></path></svg></span>
+          <div><div class="card-title-light" style="font-size:26px;margin-bottom:18px;">Месяц после запуска — на связи.</div><div class="card-desc-light" style="font-size:17px;">Если что-то потребуется исправить или доработать — делаю это без очереди и без лишних вопросов.</div></div>
+        </div>
+        <div class="gcard" style="display:flex;align-items:flex-start;gap:18px;padding:28px 26px;border-radius:14px">
+          <span class="gck" style="flex:0 0 auto;margin-top:2px;display:grid;place-items:center;width:38px;height:38px;border:1px solid rgba(210,210,210,.3);border-radius:50%;color:#d6d6d6;transition:border-color .4s,background .4s,color .4s"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3 4 6v6c0 4 3.4 6.8 8 9 4.6-2.2 8-5 8-9V6l-8-3z"></path><path d="M9 12l2 2 4-4"></path></svg></span>
+          <div><div class="card-title-light" style="font-size:26px;margin-bottom:18px;">Каждый отвечает за своё.</div><div class="card-desc-light" style="font-size:17px;">Я отвечаю за инструменты, которые помогают привлекать клиентов. Качество продукта, цены и сервис находятся на стороне бизнеса.</div></div>
+        </div>
+        <div class="gcard" style="display:flex;align-items:flex-start;gap:18px;padding:28px 26px;border-radius:14px">
+          <span class="gck" style="flex:0 0 auto;margin-top:2px;display:grid;place-items:center;width:38px;height:38px;border:1px solid rgba(210,210,210,.3);border-radius:50%;color:#d6d6d6;transition:border-color .4s,background .4s,color .4s"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3 4 6v6c0 4 3.4 6.8 8 9 4.6-2.2 8-5 8-9V6l-8-3z"></path><path d="M9 12l2 2 4-4"></path></svg></span>
+          <div><div class="card-title-light" style="font-size:26px;margin-bottom:18px;">Разбор — без подвоха.</div><div class="card-desc-light" style="font-size:17px;">Бесплатно. Даже если после разговора решишь не работать со мной.</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- БЛОК 08 – РАЗБОР                                             -->
+  <!-- ============================================================ -->
+  <section id="call" style="position:relative;z-index:5;background:linear-gradient(#dcdcdc,#cfcfcf);padding:clamp(88px,13vh,158px) clamp(22px,4vw,72px);overflow:hidden">
+    <div style="position:relative;max-width:1180px;margin:0 auto" class="reveal">
+      <div>
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:24px">
+          <span class="section-number" style="color:#666;">08</span>
+          <span style="display:block;width:38px;height:1px;background:rgba(0,0,0,.25)"></span>
+          <span style="font:500 13px 'PP Neue Montreal',sans-serif;color:#666;letter-spacing:0;">С чего начать</span>
+        </div>
+        <h2 class="section-title" style="font-size:clamp(40px,5vw,76px);margin-top:0;">Разберусь,<br>где бизнес теряет клиентов и деньги</h2>
+      </div>
+      <div style="margin-top:clamp(40px,5vw,64px);display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(14px,1.4vw,18px)" class="rev-grid">
+        <div class="svc lt-marble" style="position:relative;display:flex;flex-direction:column;gap:12px;padding:32px 28px 34px;border:1px solid rgba(0,0,0,.1);border-radius:14px;overflow:hidden">
+          <span class="svcbar" style="position:absolute;top:0;left:0;height:2px;background:linear-gradient(90deg,#111,transparent)"></span>
+          <span class="step-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 13l4 4L19 7"></path></svg></span>
+          <span class="num-serif" style="font-size:15px;">01</span>
+          <div class="card-title title-serif" style="font-size:24px;">Посмотрю текущую ситуацию</div>
+          <div class="card-desc" style="font-size:17px;">Где бизнес уже работает хорошо, а где теряет возможности.</div>
+        </div>
+        <div class="svc lt-marble" style="position:relative;display:flex;flex-direction:column;gap:12px;padding:32px 28px 34px;border:1px solid rgba(0,0,0,.1);border-radius:14px;overflow:hidden">
+          <span class="svcbar" style="position:absolute;top:0;left:0;height:2px;background:linear-gradient(90deg,#111,transparent)"></span>
+          <span class="step-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 13l4 4L19 7"></path></svg></span>
+          <span class="num-serif" style="font-size:15px;">02</span>
+          <div class="card-title title-serif" style="font-size:24px;">Найду точки роста</div>
+          <div class="card-desc" style="font-size:17px;">Покажу, что можно улучшить в ближайшее время.</div>
+        </div>
+        <div class="svc lt-marble" style="position:relative;display:flex;flex-direction:column;gap:12px;padding:32px 28px 34px;border:1px solid rgba(0,0,0,.1);border-radius:14px;overflow:hidden">
+          <span class="svcbar" style="position:absolute;top:0;left:0;height:2px;background:linear-gradient(90deg,#111,transparent)"></span>
+          <span class="step-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 13l4 4L19 7"></path></svg></span>
+          <span class="num-serif" style="font-size:15px;">03</span>
+          <div class="card-title title-serif" style="font-size:24px;">Дам понятный план</div>
+          <div class="card-desc" style="font-size:17px;">Без сложных терминов. Только конкретные действия.</div>
+        </div>
+        <div class="svc lt-marble" style="position:relative;display:flex;flex-direction:column;gap:12px;padding:32px 28px 34px;border:1px solid rgba(0,0,0,.1);border-radius:14px;overflow:hidden">
+          <span class="svcbar" style="position:absolute;top:0;left:0;height:2px;background:linear-gradient(90deg,#111,transparent)"></span>
+          <span class="step-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 13l4 4L19 7"></path></svg></span>
+          <span class="num-serif" style="font-size:15px;">04</span>
+          <div class="card-title title-serif" style="font-size:24px;">Общаюсь лично</div>
+          <div class="card-desc" style="font-size:17px;">Отвечаешь напрямую мне, а не менеджеру, который потом кому-то передаёт задачу.</div>
+        </div>
+      </div>
+      <div style="margin-top:48px;text-align:center">
+        <a href="https://t.me/iamSayfullah" target="_blank" rel="noopener" class="btn" style="display:inline-flex;align-items:center;gap:16px;font-size:16px;color:#141414;background:linear-gradient(#f5f5f5,#e3e3e3);border:1px solid rgba(0,0,0,.14);padding:18px 32px;border-radius:12px;text-decoration:none;box-shadow:0 12px 30px rgba(10,10,10,.16);letter-spacing:.12em;">
+          Получить разбор
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17 17 7M9 7h8v8"></path></svg>
+        </a>
+        <div class="body-text-sm" style="margin-top:14px;color:#7c7c7c;text-align:center;">Разбор бесплатный. Без обязательств.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- БЛОК 09 – ФИНАЛЬНЫЙ CTA                                     -->
+  <!-- ============================================================ -->
+  <a id="cta"></a>
+  <section style="position:relative;z-index:5;min-height:clamp(640px,94vh,1040px);display:flex;align-items:flex-end;overflow:hidden;padding:clamp(56px,9vh,120px) clamp(22px,4vw,72px) clamp(48px,6vh,84px);background:linear-gradient(155deg,#1a1a1a 0%,#101010 46%,#0a0a0a 100%)">
+    <div role="img" aria-label="iSAYFULLAH" style="position:absolute;top:0;right:0;bottom:0;width:54%;z-index:0;background:url('photos/ruki.png') 50% 24%/cover;filter:grayscale(1) contrast(1.1);-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 34%,#000 100%);mask-image:linear-gradient(90deg,transparent 0,#000 34%,#000 100%);animation:hzoom 10s cubic-bezier(.2,.7,.2,1) both"></div>
+    <div style="position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(0deg,#0a0a0a 6%,rgba(10,10,10,.42) 30%,transparent 56%)"></div>
+    <div class="reveal" style="position:relative;z-index:2;width:100%;max-width:1280px;margin:0 auto">
+      <div style="display:flex;align-items:center;gap:14px;margin-bottom:24px">
+        <span class="section-number" style="color:#9a9a9a;">09</span>
+        <span style="display:block;width:38px;height:1px;background:rgba(210,210,210,.3)"></span>
+        <span style="font:500 13px 'PP Neue Montreal',sans-serif;color:#c8c8c8;letter-spacing:0;">Следующий шаг</span>
+      </div>
+      <h2 class="hero-title" style="font-size:clamp(48px,7vw,118px);margin-top:0;line-height:.92;text-shadow:0 6px 50px rgba(0,0,0,.55);">
+        <span class="hero-light" style="font-size:clamp(40px,6vw,88px);display:block;">Следующий шаг —</span>
+        <span class="hero-accent" style="font-size:clamp(48px,7vw,118px);display:block;">за тобой.</span>
+      </h2>
+      <div class="body-text" style="margin-top:28px;max-width:42rem;color:#b4b4b4;">Опиши бизнес в двух сообщениях. Отвечу с конкретикой: что делать в первую очередь и что это даст.</div>
+      <div style="margin-top:40px;display:flex;flex-direction:column;align-items:flex-start;gap:18px">
+        <a class="hero-cta btn" href="https://t.me/iamSayfullah" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:space-between;gap:54px;min-width:320px;padding:21px 30px;border:1px solid rgba(255,255,255,.5);border-radius:12px;background:linear-gradient(#f5f5f5,#e3e3e3);text-decoration:none;color:#141414;font-size:16px;box-shadow:0 16px 34px rgba(0,0,0,.3)">
+          Обсудить задачу
+          <svg class="ctaArr" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.4" style="transition:transform .4s cubic-bezier(.2,.7,.2,1)"><path d="M7 17 17 7M9 7h8v8"></path></svg>
+        </a>
+        <span style="font:400 13px 'PP Neue Montreal',sans-serif;color:#9a9a9a;letter-spacing:0;">Отвечаю лично. Без менеджеров и очереди.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- БЛОК 10 – FAQ                                               -->
+  <!-- ============================================================ -->
+  <section id="faq" style="position:relative;z-index:5;background:linear-gradient(#d6d6d6,#c8c8c8);padding:clamp(80px,11vh,140px) clamp(22px,4vw,72px);overflow:hidden">
+    <div style="position:relative;max-width:1080px;margin:0 auto" class="reveal">
+      <div style="display:flex;align-items:center;gap:14px;margin-bottom:24px">
+        <span class="section-number" style="color:#666;">10</span>
+        <span style="display:block;width:38px;height:1px;background:rgba(0,0,0,.25)"></span>
+        <span style="font:500 13px 'PP Neue Montreal',sans-serif;color:#666;letter-spacing:0;">Часто спрашивают</span>
+      </div>
+      <h2 class="section-title" style="font-size:clamp(38px,4.6vw,68px);margin-top:0;">Коротко<br>и по делу</h2>
+      <div style="margin-top:clamp(40px,4vw,56px);display:flex;flex-direction:column;gap:4px">
+        <div class="orow" style="padding:32px 24px;border-top:1px solid rgba(0,0,0,.13);border-radius:10px">
+          <div class="faq-q-serif" style="margin-bottom:8px;">Что изменится после разбора?</div>
+          <div class="faq-a">Ты поймёшь, где бизнес теряет клиентов, время или деньги, и получишь понятный план дальнейших действий.</div>
+        </div>
+        <div class="orow" style="padding:32px 24px;border-top:1px solid rgba(0,0,0,.13);border-radius:10px">
+          <div class="faq-q-serif" style="margin-bottom:8px;">Что если ты не уложишься в срок?</div>
+          <div class="faq-a">Ты получаешь готовый проект бесплатно. Весь риск на мне.</div>
+        </div>
+        <div class="orow" style="padding:32px 24px;border-top:1px solid rgba(0,0,0,.13);border-radius:10px">
+          <div class="faq-q-serif" style="margin-bottom:8px;">Что ты делаешь для бизнеса?</div>
+          <div class="faq-a">Смотрю, где бизнес теряет клиентов или время, и подбираю только то, что реально нужно — сайт, рекламу, бота, автоматизацию. Инструмент — не цель. Цель — результат для бизнеса.</div>
+        </div>
+        <div class="orow" style="padding:32px 24px;border-top:1px solid rgba(0,0,0,.13);border-radius:10px">
+          <div class="faq-q-serif" style="margin-bottom:8px;">Какие у тебя гарантии?</div>
+          <div class="faq-a">Это про срок и про то, что происходит после. С деньгами то же самое — цену и объём работы фиксируем до старта, без сюрпризов в процессе.</div>
+        </div>
+        <div class="orow" style="padding:32px 24px;border-top:1px solid rgba(0,0,0,.13);border-bottom:1px solid rgba(0,0,0,.13);border-radius:10px">
+          <div class="faq-q-serif" style="margin-bottom:8px;">Сколько это стоит?</div>
+          <div class="faq-a">Цена зависит от задачи. Обсуждаем деньги только после того, как я пойму, что нужно бизнесу.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- FOOTER                                                       -->
+  <!-- ============================================================ -->
+  <footer id="contacts" style="position:relative;z-index:5;background:#0a0a0a;padding:clamp(56px,8vh,96px) clamp(22px,4vw,72px) clamp(34px,5vh,56px);border-top:1px solid rgba(210,210,210,.1)">
+    <div style="max-width:1280px;margin:0 auto">
+      <div style="display:flex;flex-wrap:wrap;gap:clamp(30px,5vw,80px);justify-content:space-between">
+        <div style="max-width:340px">
+          <div style="display:flex;align-items:center;gap:12px">
+            <span style="font:500 16px 'PP Neue Montreal',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:#f0f0f0">iSAYFULLAH</span>
+          </div>
+          <div class="body-text-sm" style="margin-top:16px;color:#9a9a9a;">Прокачка бизнеса: сайты, продвижение, автоматизация, ИИ и дополнительные возможности для роста. Работаю онлайн по СНГ.</div>
+          <a href="#skills" class="flink" style="display:inline-block;margin-top:16px;font:500 13px 'PP Neue Montreal',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#c8c8c8;text-decoration:none;border-bottom:1px solid rgba(210,210,210,.3);padding-bottom:4px;">Что меняется</a>
+        </div>
+        <div>
+          <div style="font:400 13px 'PP Neue Montreal',sans-serif;color:#7c7c7c;letter-spacing:0;">Контакты</div>
+          <address style="display:block;margin-top:14px;font-style:normal">
+            <a href="tel:+79658322722" class="flink" style="display:block;font:400 16px 'PP Neue Montreal',sans-serif;color:#a8a8a8;text-decoration:none;">+7 965 832 27 22</a>
+            <a href="tel:+79389024895" class="flink" style="display:block;margin-top:4px;font:400 16px 'PP Neue Montreal',sans-serif;color:#a8a8a8;text-decoration:none;">+7 938 902 48 95</a>
+            <div style="display:flex;gap:9px;margin-top:12px">
+              <a class="cchip" href="https://t.me/iamSayfullah" target="_blank" rel="noopener" style="font:500 13px 'PP Neue Montreal',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#c8c8c8;text-decoration:none;border:1px solid rgba(210,210,210,.28);border-radius:9px;padding:9px 13px;">Telegram</a>
+              <a class="cchip" href="https://t.me/iSAYFULLAH" target="_blank" rel="noopener" style="font:500 13px 'PP Neue Montreal',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#c8c8c8;text-decoration:none;border:1px solid rgba(210,210,210,.28);border-radius:9px;padding:9px 13px;">Канал</a>
+            </div>
+          </address>
+        </div>
+      </div>
+      <div style="margin-top:26px;padding-top:24px;border-top:1px solid rgba(210,210,210,.1);display:flex;flex-wrap:wrap;gap:16px 28px;align-items:center;justify-content:space-between">
+        <div style="font:400 13px 'PP Neue Montreal',sans-serif;color:#6b6b6b;letter-spacing:0;">© 2026 iSAYFULLAH.</div>
+        <div style="display:flex;gap:20px;flex-wrap:wrap">
+          <a href="partner/index.html" class="flink" style="font:500 13px 'PP Neue Montreal',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#c8c8c8;text-decoration:none;">Партнёрам ↗</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== МОБИЛЬНОЕ МЕНЮ ===== -->
+  <div id="mobile-menu" data-menu-close="" role="dialog" aria-modal="true" aria-label="Меню навигации" aria-hidden="true" style="display:none;position:fixed;inset:0;z-index:40;background:rgba(10,10,10,.97);backdrop-filter:blur(10px);flex-direction:column;align-items:center;justify-content:center;gap:28px">
+    <button type="button" data-menu-close="" aria-label="Закрыть меню" style="position:absolute;top:22px;right:22px;display:grid;place-items:center;width:46px;height:46px;border-radius:12px;background:none;border:1px solid rgba(210,210,210,.28);color:#f0f0f0;cursor:pointer"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>
+    <a href="#top" data-menu-close="" style="font:500 17px 'PP Neue Montreal',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#f2f2f2;text-decoration:none;">Главная</a>
+    <a href="#why" data-menu-close="" style="font:500 17px 'PP Neue Montreal',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#9a9a9a;text-decoration:none;">Подход</a>
+    <a href="#skills" data-menu-close="" style="font:500 17px 'PP Neue Montreal',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#9a9a9a;text-decoration:none;">Что меняется</a>
+    <a href="#extra" data-menu-close="" style="font:500 17px 'PP Neue Montreal',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#9a9a9a;text-decoration:none;">Дополнительно</a>
+    <a href="#safe" data-menu-close="" style="font:500 17px 'PP Neue Montreal',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#9a9a9a;text-decoration:none;">Уверенность</a>
+    <a href="#faq" data-menu-close="" style="font:500 17px 'PP Neue Montreal',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#9a9a9a;text-decoration:none;">Вопросы</a>
+    <a href="#contacts" data-menu-close="" style="font:500 17px 'PP Neue Montreal',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#9a9a9a;text-decoration:none;">Контакты</a>
+    <a href="partner/index.html" data-menu-close="" style="font:500 17px 'PP Neue Montreal',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#9a9a9a;text-decoration:none;">Партнёрам ↗</a>
+    <a href="https://t.me/iamSayfullah" target="_blank" rel="noopener" style="margin-top:10px;font:500 14px 'PP Neue Montreal',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#f2f2f2;border:1px solid rgba(210,210,210,.28);padding:15px 28px;border-radius:11px;text-decoration:none;">Написать в Telegram</a>
   </div>
+
+</div>
+
+<!-- ===== КНОПКА НАВЕРХ ===== -->
+<button id="toTop" aria-label="Наверх" style="position:fixed;right:clamp(16px,3vw,32px);bottom:clamp(16px,3vw,32px);z-index:45;display:grid;place-items:center;width:52px;height:52px;border-radius:14px;border:1px solid rgba(255,255,255,.5);background:linear-gradient(135deg,#eceae4,#c9c7c0 48%,#f3f2ee 62%,#cecdc4);color:#141414;cursor:pointer;box-shadow:0 12px 30px rgba(0,0,0,.34);opacity:0;transform:translateY(14px);pointer-events:none;transition:opacity .35s,transform .35s;font:500 13px 'PP Neue Montreal',sans-serif">
+  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 19V5M6 11l6-6 6 6"></path></svg>
+</button>
+
+<script>
+  // ===== ПРЕЛОАДЕР: волновая анимация =====
+  (function() {
+    const loader = document.getElementById('loader');
+    const wordContainer = document.getElementById('preloaderWord');
+    if (!loader || !wordContainer) return;
+
+    const text = 'iSAYFULLAH';
+    const letters = text.split('');
+    letters.forEach((ch, i) => {
+      const span = document.createElement('span');
+      span.textContent = ch === ' ' ? '\u00A0' : ch;
+      span.style.animationDelay = (i * 0.07) + 's';
+      wordContainer.appendChild(span);
+    });
+
+    const totalDelay = letters.length * 0.07 + 1.6;
+    setTimeout(function() {
+      loader.classList.add('hidden');
+    }, totalDelay * 1000 + 200);
+
+    setTimeout(function() {
+      if (!loader.classList.contains('hidden')) loader.classList.add('hidden');
+    }, 3000);
+  })();
+
+  // ===== КАСКАДНОЕ ПОЯВЛЕНИЕ HERO-SIDE =====
+  document.addEventListener('DOMContentLoaded', function() {
+    const heroSide = document.getElementById('heroSide');
+    if (heroSide) {
+      setTimeout(() => {
+        heroSide.classList.add('loaded');
+      }, 300);
+    }
+  });
+
+  // ===== ОСТАЛЬНОЙ JS =====
+  const io = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('is-in'); });
+  }, {threshold:.15});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  const menu = document.getElementById('mobile-menu');
+  document.querySelectorAll('[data-menu-open]').forEach(b=>b.addEventListener('click',()=>{ menu.style.display='flex'; }));
+  document.querySelectorAll('[data-menu-close]').forEach(b=>b.addEventListener('click',()=>{ menu.style.display='none'; }));
+
+  const toTop = document.getElementById('toTop');
+  window.addEventListener('scroll', ()=>{
+    if(window.scrollY > 600){ toTop.style.opacity='1'; toTop.style.transform='none'; toTop.style.pointerEvents='auto'; }
+    else{ toTop.style.opacity='0'; toTop.style.transform='translateY(14px)'; toTop.style.pointerEvents='none'; }
+  });
+  toTop.addEventListener('click', ()=> window.scrollTo({top:0, behavior:'smooth'}));
+</script>
 
 </body>
 </html>
